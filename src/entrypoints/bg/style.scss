@@ -1,0 +1,26 @@
+@use '../theme.scss' as *;
+
+
+.wrap {
+
+    .header {
+        font-size: 32px;
+        color: $primary;
+        font-weight: bold;
+        margin: 15px 0;
+        display: flex;
+        align-items: center;
+    }
+
+
+    .tiny-tabs__header {
+        justify-content: center;
+
+        .tiny-tabs__nav-wrap {
+            &::after {
+                background-color: transparent;
+            }
+        }
+    }
+
+}

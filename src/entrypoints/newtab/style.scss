@@ -1,0 +1,192 @@
+@use '../theme.scss' as *;
+@use './darg.scss';
+
+
+
+img {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+
+.left,
+.right {
+    display: flex;
+    flex-direction: column;
+
+    .bookmarks-item {
+        border-radius: 8px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 14px;
+        font-weight: 500;
+        white-space: nowrap;
+        padding: 0 16px;
+        cursor: pointer;
+        margin-bottom: 4px;
+        transition: all 0.2s ease;
+        color: $text-secondary;
+
+        &:hover {
+            background-color: $primary-light;
+            color: $primary;
+        }
+
+        &.tree-select {
+            background-color: $primary;
+            color: $text-white;
+            font-weight: 600;
+            box-shadow: 0 2px 8px $primary-shadow;
+
+            .count {
+                color: $primary !important;
+                background: $bg-white !important;
+                padding: 2px 8px;
+                border-radius: 12px;
+                font-size: 12px;
+                font-weight: 700;
+                box-shadow: 0 2px 4px $shadow-md;
+            }
+        }
+
+        .count {
+            padding: 2px 8px;
+            color: $text-white;
+            font-weight: 600;
+            font-size: 12px;
+            background: $accent;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+        }
+
+        &.ishometree {
+            .count {
+                background: $bg-white;
+                background: $primary;
+            }
+        }
+    }
+}
+
+.center-top {
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.center-bottom {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-gap: 16px;
+    grid-auto-rows: 100px;
+    overflow-y: auto;
+
+    .item {
+        padding: 16px;
+        border-radius: 12px;
+        background: transparent;
+        border: 1px solid $primary-border;
+        box-shadow: 0 2px 8px $shadow-sm;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+        gap: 10px;
+
+        &:hover {
+            border-color: $primary-border-hover;
+            box-shadow: 0 8px 16px $primary-shadow-light;
+            transform: translateY(-2px) scale(1.05);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .title {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.4;
+            color: $text-primary;
+            margin-bottom: 8px;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            overflow: hidden;
+        }
+
+        .url {
+            font-size: 14px;
+            margin-bottom: 6px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            color: $text-muted;
+
+            a {
+                text-decoration: none;
+                color: $primary;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        img {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            object-fit: contain;
+            padding: 4px;
+        }
+    }
+
+    .item-ghost {
+        background-color: $primary-light !important;
+        border: 2px solid $primary !important;
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 8px 16px $primary-shadow !important;
+    }
+}
+
+.search {
+    .tiny-autocomplete {
+        width: 100%;
+    }
+
+}
+
+.search-dropdown {
+    .tiny-autocomplete-suggestion__wrap {
+        max-height: 500px !important;
+    }
+
+    .bookmark-item {
+        display: flex;
+        align-items: center;
+        padding: 8px 12px;
+        gap: 18px;
+
+        >img {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        >div {
+            flex: 1;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+
+            >div {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+}

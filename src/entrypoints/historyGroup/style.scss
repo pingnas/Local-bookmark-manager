@@ -1,0 +1,23 @@
+@use '../theme.scss' as *;
+@use './ag-grid.scss';
+
+.wrap {
+    .group-name {
+        font-size: 18px;
+        color: $primary;
+        font-weight: bold;
+        gap: 20px;
+        display: flex;
+        align-items: center;
+        margin: 15px 0;
+    }
+
+    .header {
+        font-size: 32px;
+        color: $primary;
+        font-weight: bold;
+        margin: 15px 0;
+        display: flex;
+        align-items: center;
+    }
+}

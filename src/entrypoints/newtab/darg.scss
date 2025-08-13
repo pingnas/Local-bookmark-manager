@@ -1,0 +1,21 @@
+/// 拖拽到书签文件夹，ghost 效果
+.drag-tree-item-container:has(.item-to-tree-item-ghost) {
+
+    .item-to-tree-item-ghost {
+        display: none;
+    }
+
+    .drag-tree-item {
+        .bookmarks-item {
+            background: red !important;
+            color: #fff;
+        }
+    }
+}
+
+/// 书签文件夹拖拽
+.tree-item-ghost {
+    .drag-tree-item {
+        padding-left: 0px !important;
+    }
+}

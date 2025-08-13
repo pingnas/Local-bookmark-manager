@@ -1,0 +1,124 @@
+// Primary Colors
+$primary: #6d28d9;
+$primary-light: rgba(109, 40, 217, 0.08);
+$primary-border: rgba(109, 40, 217, 0.15);
+$primary-border-hover: rgba(109, 40, 217, 0.25);
+$primary-shadow: rgba(109, 40, 217, 0.2);
+$primary-shadow-light: rgba(109, 40, 217, 0.1);
+
+// Accent Colors
+$accent: #db2777;
+
+// Text Colors
+$text-primary: #111827;
+$text-secondary: #374151;
+$text-muted: #6b7280;
+$text-white: #ffffff;
+
+// Background Colors
+$bg-white: #ffffff;
+$bg-light: #fafafa;
+$bg-lighter: #f9fafb;
+
+// Shadow Colors
+$shadow-sm: rgba(0, 0, 0, 0.06);
+$shadow-md: rgba(0, 0, 0, 0.1);
+
+// Overlay Colors
+$overlay-light: rgba(255, 255, 255, 0.3);
+
+.hide {
+    display: none;
+    visibility: hidden;
+}
+
+.flex {
+    display: flex;
+}
+
+// 生成 gap
+@for $i from 0 through 30 {
+    .gap-#{$i} {
+        gap: #{$i}px;
+    }
+
+    .gap-#{$i}-i {
+        gap: #{$i}px !important;
+    }
+}
+
+// 生成 justify-content
+@each $justify-content in start, end, center, space-between, space-around {
+    .justify-content-#{$justify-content} {
+        justify-content: #{$justify-content};
+    }
+}
+
+// 生成 align-items
+@each $align-items in start, end, center, stretch {
+    .align-items-#{$align-items} {
+        align-items: #{$align-items};
+    }
+}
+
+//flex-direction
+@each $flex-direction in row, column, row-reverse, column-reverse {
+    .flex-direction-#{$flex-direction} {
+        flex-direction: #{$flex-direction};
+    }
+
+    .flex-direction-#{$flex-direction}-i {
+        flex-direction: #{$flex-direction} !important;
+    }
+}
+
+//flex-wrap
+@each $flex-wrap in nowrap, wrap, wrap-reverse {
+    .flex-wrap-#{$flex-wrap} {
+        flex-wrap: #{$flex-wrap};
+    }
+}
+
+
+.tiny-form-item__content,
+.tiny-input {
+    &:hover {
+        .tiny-input__suffix {
+            visibility: initial;
+        }
+    }
+
+    .tiny-input__suffix {
+        visibility: hidden;
+    }
+}
+
+* ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px
+}
+
+*::-webkit-scrollbar-corner {
+    background: 0 0
+}
+
+* ::-webkit-scrollbar-track {
+    background: 0 0
+}
+
+* ::-webkit-scrollbar-thumb {
+    background: #dbdbdb;
+    border-radius: 4px
+}
+
+* ::-webkit-scrollbar-thumb:hover {
+    background: #dbdbdb
+}
+
+*::-webkit-scrollbar-thumb:active {
+    background: #dbdbdb
+}
+
+img {
+    -webkit-user-drag: none;
+}
