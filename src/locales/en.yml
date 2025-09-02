@@ -90,6 +90,8 @@ bg:
     clear: Clear
     add: Add
     setting: Settings
+  text:
+    upload_input: Please enter network address
   tab:
     default: Default Background
     location: Upload Background

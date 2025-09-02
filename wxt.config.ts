@@ -6,10 +6,6 @@ import { defineConfig } from 'wxt';
 // https://wxt.dev/api/config.html
 // https://github.com/wxt-dev/wxt
 export default defineConfig({
-  // Chrome 浏览器中未显示扩展程序 https://github.com/wxt-dev/wxt/issues/1720
-  webExt: {
-    chromiumArgs: ["--disable-features=DisableLoadExtensionCommandLineSwitch"],
-  },
   modules: [
     '@wxt-dev/module-vue',
     '@wxt-dev/auto-icons',

@@ -20,7 +20,7 @@ export default defineComponent({
             <div class={'flex gap-20'}>
                 <FileUpload
                     accept='image/*'
-                    action='https://www.example.com/upload'
+                    action=''
                     show-file-list={false}
                     auto-upload={false}
                     multiple={true}

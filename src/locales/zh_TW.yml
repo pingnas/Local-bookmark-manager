@@ -90,6 +90,8 @@ bg:
     clear: 清空
     add: 添加
     setting: 設置
+  text:
+    upload_input: 請輸入網絡地址
   tab:
     default: 默認背景
     location: 上傳背景

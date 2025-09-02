@@ -73,7 +73,7 @@ export default defineComponent({
           </Button>
           <FileUpload
             accept='.json'
-            action='https://www.example.com/upload'
+            action=''
             show-file-list={false}
             auto-upload={false}
             {

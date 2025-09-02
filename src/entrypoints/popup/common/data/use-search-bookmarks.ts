@@ -1,5 +1,5 @@
+import PinyinMatch from 'pinyin-match';
 import { getName } from "../util/url";
-
 export interface searchBookmarksItem { title: string, url: string, node: BookmarkTreeNode, parent: BookmarkTreeNode | null }
 
 // 对书签执行模糊搜索
@@ -14,7 +14,7 @@ export const searchBookmarks = (bookmarks: BookmarkTreeNode[], query: string) =>
     const stack: [BookmarkTreeNode, BookmarkTreeNode | null][] =
         bookmarks.map(node => [node, null]);
 
-    while (stack.length > 0 && results.length < 50) {
+    while (stack.length > 0 && results.length < 80) {
         const [node, parent] = stack.pop()!;
 
         if (node.url) {
@@ -23,7 +23,7 @@ export const searchBookmarks = (bookmarks: BookmarkTreeNode[], query: string) =>
             const url = node.url.toLowerCase();
 
             // 使用 includes 进行字符串匹配
-            if (title.includes(queryLower) || url.includes(queryLower)) {
+            if (title.includes(queryLower) || url.includes(queryLower) || PinyinMatch.match(title, query) || PinyinMatch.match(url, query)) {
                 results.push({
                     title: node.title || getName(node) || '',
                     url: node.url,

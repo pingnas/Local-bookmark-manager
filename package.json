@@ -17,7 +17,7 @@
   "dependencies": {
     "@imengyu/vue3-context-menu": "^1.5.2",
     "@opentiny/vue": "^3.25.0",
-    "@vueuse/core": "^13.8.0",
+    "@vueuse/core": "^13.9.0",
     "@wxt-dev/i18n": "^0.2.4",
     "ag-grid-community": "^34.1.2",
     "ag-grid-vue3": "^34.1.2",
@@ -27,6 +27,7 @@
     "lottie-web": "^5.13.0",
     "miao-lang": "^1.0.5",
     "normalize.css": "^8.0.1",
+    "pinyin-match": "^1.2.8",
     "rxjs": "^7.8.2",
     "sass": "1.91.0",
     "uuid": "^11.1.0",

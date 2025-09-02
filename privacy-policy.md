@@ -1,83 +1,83 @@
-# 隐私政策 - Local Bookmark Manager
+# Privacy Policy - Local Bookmark Manager
 
-**最后更新日期：2025年9月1日**
+**Last Updated: September 1, 2025**
 
-## 引言
+## Introduction
 
-Local Bookmark Manager（以下简称"我们"、"本扩展"或"本产品"）尊重并保护用户的隐私。本隐私政策说明我们如何收集、使用、存储和保护您的信息。请您在使用本扩展前仔细阅读本隐私政策。
+Local Bookmark Manager (hereinafter referred to as "we," "our extension," or "our product") respects and protects your privacy. This Privacy Policy explains how we collect, use, store, and protect your information. Please read this Privacy Policy carefully before using our extension.
 
-## 信息收集
+## Information Collection
 
-### 我们收集的信息
+### Information We Collect
 
-本扩展仅在本地处理以下信息：
+This extension only processes the following information locally:
 
-1. **书签数据**：我们访问您的浏览器书签以提供书签管理功能。
-2. **浏览历史**：我们访问您的浏览历史以提供历史记录管理功能。
-3. **标签组信息**：我们访问您的标签组信息以提供标签组管理功能。
-4. **用户配置**：包括您对扩展的自定义设置，如背景图片、界面布局等。
+1. **Bookmark Data**: We access your browser bookmarks to provide bookmark management functionality.
+2. **Browsing History**: We access your browsing history to provide history management functionality.
+3. **Tab Group Information**: We access your tab group information to provide tab group management functionality.
+4. **User Configuration**: Including your custom settings for the extension, such as background images, interface layout, etc.
 
-### 我们如何收集信息
+### How We Collect Information
 
-所有信息均通过浏览器提供的官方API获取，包括：
+All information is obtained through official browser APIs, including:
 - Chrome Bookmarks API
 - Chrome History API
 - Chrome Tabs API
 - Chrome TabGroups API
 - Chrome Storage API
 
-## 信息使用
+## Information Usage
 
-我们收集的信息仅用于：
+The information we collect is only used for:
 
-1. 提供、维护和改进扩展功能
-2. 根据您的设置自定义扩展体验
-3. 响应您的请求和反馈
+1. Providing, maintaining, and improving extension functionality
+2. Customizing the extension experience according to your settings
+3. Responding to your requests and feedback
 
-## 信息存储
+## Information Storage
 
-### 本地存储
+### Local Storage
 
-所有用户数据均存储在您的本地设备上，通过以下方式：
+All user data is stored on your local device through:
 
-1. **浏览器存储**：使用Chrome Storage API存储用户配置和设置
-2. **IndexedDB**：用于存储较大的数据，如自定义背景图片
+1. **Browser Storage**: Using Chrome Storage API to store user configurations and settings
+2. **IndexedDB**: Used for storing larger data, such as custom background images
 
-### 云存储
+### Cloud Storage
 
-本扩展**不会**将您的任何数据上传到任何远程服务器。所有数据处理均在您的设备本地完成。
+This extension **does not** upload any of your data to any remote servers. All data processing is completed locally on your device.
 
-## 信息共享
+## Information Sharing
 
-我们不会与任何第三方共享您的个人信息。
+We do not share your personal information with any third parties.
 
-## 数据安全
+## Data Security
 
-我们采取合理的技术措施来保护您的信息：
+We take reasonable technical measures to protect your information:
 
-1. 所有数据仅存储在您的本地设备上
-2. 不收集或传输任何个人身份信息
-3. 不使用任何跟踪技术或分析工具
+1. All data is stored only on your local device
+2. No personal identifying information is collected or transmitted
+3. No tracking technologies or analytics tools are used
 
-## 用户权利
+## User Rights
 
-您对自己的数据拥有完全控制权：
+You have complete control over your own data:
 
-1. **访问权**：您可以随时通过扩展界面访问所有存储的数据
-2. **修改权**：您可以随时修改您的设置和配置
-3. **删除权**：您可以通过扩展的"清除配置"功能删除所有存储的数据
-4. **导出权**：您可以使用扩展的导出功能导出您的配置数据
+1. **Right to Access**: You can access all stored data through the extension interface at any time
+2. **Right to Modify**: You can modify your settings and configurations at any time
+3. **Right to Delete**: You can delete all stored data using the extension's "Clear Configuration" feature
+4. **Right to Export**: You can export your configuration data using the extension's export feature
 
-## 隐私政策更新
+## Privacy Policy Updates
 
-我们可能会不时更新本隐私政策。当我们进行重大变更时，我们将通过扩展更新说明通知您。
+We may update this Privacy Policy from time to time. When we make significant changes, we will notify you through extension update notes.
 
-## 联系我们
+## Contact Us
 
-如果您对本隐私政策有任何疑问或建议，请通过以下方式联系我们：
+If you have any questions or suggestions regarding this Privacy Policy, please contact us at:
 
-- GitHub Issues：https://github.com/pingnas/Local-bookmark-manager
+- GitHub Issues: https://github.com/pingnas/Local-bookmark-manager
 
-## 同意
+## Consent
 
-使用本扩展即表示您同意本隐私政策的条款。如果您不同意本政策，请不要使用本扩展。
+By using this extension, you agree to the terms of this Privacy Policy. If you do not agree with this policy, please do not use this extension.

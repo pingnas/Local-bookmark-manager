@@ -1,6 +1,7 @@
 import { searchBookmarks, searchBookmarksItem, useBookmarks } from '@/entrypoints/popup/common/data';
 import { getFaviconUrl, openUrl, openUrlInNewTab, useMyStore } from '@/entrypoints/popup/common/util';
 import { Autocomplete } from "@opentiny/vue";
+import PinyinMatch from 'pinyin-match';
 
 export default defineComponent({
     setup() {
@@ -76,9 +77,27 @@ export default defineComponent({
                         let url = slotScope.url || '';
 
                         if (this.value) {
-                            const reg = new RegExp(this.value, 'gi');
-                            title = title.replace(reg, match => `<span style="color: #f44336">${match}</span>`);
-                            url = url.replace(reg, match => `<span style="color: #f44336">${match}</span>`);
+
+                            const arr = PinyinMatch.match(title, this.value);
+                            const arr2 = PinyinMatch.match(url, this.value);
+                            if (arr) {
+                                const [start, end] = arr;
+                                const matchedText = title.slice(start, end + 1);
+                                title = title.slice(0, start) +
+                                    `<span style="color: #f44336">${matchedText}</span>` +
+                                    title.slice(end + 1);
+                            } else if (arr2) {
+                                const [start, end] = arr2;
+                                const matchedText = url.slice(start, end + 1);
+                                url = url.slice(0, start) +
+                                    `<span style="color: #f44336">${matchedText}</span>` +
+                                    url.slice(end + 1);
+                            } else {
+                                const reg = new RegExp(this.value, 'gi');
+                                title = title.replace(reg, match => `<span style="color: #f44336">${match}</span>`);
+                                url = url.replace(reg, match => `<span style="color: #f44336">${match}</span>`);
+                            }
+
                         }
                         return <div
                             key={slotScope.url + slotScope.node.id}
