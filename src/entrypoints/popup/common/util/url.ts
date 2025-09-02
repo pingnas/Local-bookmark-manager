@@ -1,4 +1,4 @@
-import { isNil } from "lodash-es";
+import { isNil } from "es-toolkit";
 
 export const getFaviconUrl = (url: string = '') => {
     return `chrome-extension://${browser.runtime.id}/_favicon/?pageUrl=${encodeURIComponent(url)}&size=40`;

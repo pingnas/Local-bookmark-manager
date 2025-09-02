@@ -7,7 +7,7 @@ import Item from './widgets/item';
 import Search from './widgets/search';
 import Shortcut from './widgets/shortcut';
 import TreeBookmarks from './widgets/tree-bookmarks';
-import { size } from 'lodash-es';
+import { size } from 'es-toolkit/compat';
 
 export default defineComponent({
   setup() {

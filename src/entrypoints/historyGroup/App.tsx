@@ -1,7 +1,7 @@
 import { createUrlToGroup, delService, readFromJson, saveAsJson, useMyStore } from '@/entrypoints/popup/common/util';
 import { Button, Col, FileUpload, Input, Row, TinyNotify } from '@opentiny/vue';
 import dayjs from 'dayjs';
-import { get, isNil, uniqBy } from 'lodash-es';
+import { get, isNil, uniqBy } from 'es-toolkit/compat';
 import { Subscription } from 'rxjs';
 import { defineComponent } from 'vue';
 import { AiOutlineDelete, AiOutlineEdit, AiOutlineLink, AiOutlineSave } from 'vue-icons-plus/ai';

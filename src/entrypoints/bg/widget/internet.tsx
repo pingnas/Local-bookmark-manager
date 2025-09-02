@@ -1,6 +1,6 @@
 import { BgConfig, ResourceType, ShowImageConfig, updateModelService, windowRatio } from "@/entrypoints/popup/common/util";
 import { Button, Input, TinyNotify } from "@opentiny/vue";
-import { isNil } from "lodash-es";
+import { isNil } from "es-toolkit";
 import Bgvideo from "./bgvideo";
 
 export default defineComponent({

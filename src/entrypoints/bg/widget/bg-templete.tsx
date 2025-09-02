@@ -1,5 +1,5 @@
 import { BgConfig, BgType, ResourceType, setBgTempelteService, ShowImageConfig, Style_Image, Style_Video, useMyStore } from "@/entrypoints/popup/common/util";
-import { isNil } from "lodash-es";
+import { isNil } from "es-toolkit";
 import { Subscription } from "rxjs";
 import Bgvideo from "./bgvideo";
 

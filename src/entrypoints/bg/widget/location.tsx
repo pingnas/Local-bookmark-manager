@@ -1,7 +1,7 @@
 import { BgConfig, readFromImage, updateModelService, windowRatio } from "@/entrypoints/popup/common/util";
 import { Button, FileUpload, TinyNotify } from "@opentiny/vue";
 import { useDebounceFn } from "@vueuse/core";
-import { isNil } from "lodash-es";
+import { isNil } from "es-toolkit";
 
 
 export default defineComponent({

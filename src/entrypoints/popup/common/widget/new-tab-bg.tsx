@@ -1,5 +1,5 @@
 import Bgvideo from "@/entrypoints/bg/widget/bgvideo";
-import { isNil } from "lodash-es";
+import { isNil } from "es-toolkit";
 import { v4 } from "uuid";
 import { ResourceType, ShowImageConfig, Style_Image, Style_Video, useMyStore } from "../util";
 

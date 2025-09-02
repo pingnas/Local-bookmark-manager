@@ -1,4 +1,4 @@
-import { omit } from "lodash-es";
+import { omit } from "es-toolkit/compat";
 import { v4 as uuidv4, } from 'uuid';
 import { App } from "vue";
 import { Button, DialogBox } from "@opentiny/vue";

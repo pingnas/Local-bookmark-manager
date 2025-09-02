@@ -1,5 +1,5 @@
 import { useDebounceFn } from "@vueuse/core";
-import { omit, pick } from "lodash-es";
+import { omit, pick } from "es-toolkit/compat";
 import { useHistory, useTabGroup } from ".";
 
 

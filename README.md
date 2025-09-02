@@ -104,3 +104,8 @@ This extension respects user privacy. All data is stored locally and is not uplo
 ## License
 
 [MIT](./LICENSE) © pingnas
+
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=pingnas/Local-bookmark-manager&type=Date)](https://www.star-history.com/#pingnas/Local-bookmark-manager&Date)

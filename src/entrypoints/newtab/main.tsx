@@ -6,7 +6,7 @@ import { BgType, newTabBgInitSerice, ResourceType, ShowImageConfig, useMyStore }
 import NewTabBg from '../popup/common/widget/new-tab-bg';
 import App from './App';
 import './style.scss';
-import { isNil } from 'lodash-es';
+import { isNil } from 'es-toolkit';
 
 useMyStore.getBgTab().then(tab => {
     const defaultConfig = new ShowImageConfig({ url: '', type: ResourceType.Video });

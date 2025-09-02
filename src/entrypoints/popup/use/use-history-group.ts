@@ -1,6 +1,6 @@
 import { useMyStore, usetabGroupDataLeval } from '@/entrypoints/popup/common/util';
 import dayjs from "dayjs";
-import { cloneDeep } from "lodash-es";
+import { cloneDeep } from "es-toolkit";
 import { v4 } from "uuid";
 import { useTabGroup } from "../common/data";
 

@@ -104,3 +104,8 @@ pnpm run zip
 ## 许可证
 
 [MIT](./LICENSE) © pingnas
+
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=pingnas/Local-bookmark-manager&type=Date)](https://www.star-history.com/#pingnas/Local-bookmark-manager&Date)

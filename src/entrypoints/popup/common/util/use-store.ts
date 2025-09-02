@@ -1,5 +1,5 @@
 import { BgConfig, BgType, miaoStorage } from "@/entrypoints/popup/common/util";
-import { isNil, omit } from "lodash-es";
+import { isNil, omit } from "es-toolkit/compat";
 import { v4 as uuidv4 } from 'uuid';
 import { UseHistoryGroup } from "../../use";
 

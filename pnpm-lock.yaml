@@ -32,9 +32,9 @@ importers:
       dexie:
         specifier: ^4.2.0
         version: 4.2.0
-      lodash-es:
-        specifier: ^4.17.21
-        version: 4.17.21
+      es-toolkit:
+        specifier: ^1.39.10
+        version: 1.39.10
       lottie-web:
         specifier: ^5.13.0
         version: 5.13.0
@@ -69,9 +69,6 @@ importers:
       '@types/chrome':
         specifier: ^0.1.4
         version: 0.1.4
-      '@types/lodash-es':
-        specifier: ^4.17.12
-        version: 4.17.12
       '@vitejs/plugin-vue-jsx':
         specifier: 5.1.1
         version: 5.1.1(vite@7.1.4(@types/node@24.3.0)(jiti@2.5.1)(sass@1.91.0))(vue@3.5.20(typescript@5.9.2))
@@ -1420,12 +1417,6 @@ packages:
   '@types/har-format@1.2.16':
     resolution: {integrity: sha512-fluxdy7ryD3MV6h8pTfTYpy/xQzCFC7m89nOH9y94cNqJ1mDIDPut7MnRHI3F6qRmh/cT2fUjG1MLdCNb4hE9A==}
 
-  '@types/lodash-es@4.17.12':
-    resolution: {integrity: sha512-0NgftHUcV4v34VhXm8QBSftKVXtbkBG3ViCjs6+eJ5a6y6Mi/jiFGPc1sC7QK+9BFhWrURE3EOggmWaSxL9OzQ==}
-
-  '@types/lodash@4.17.20':
-    resolution: {integrity: sha512-H3MHACvFUEiujabxhaI/ImO6gUrd8oOurg7LQtS7mbwIXA/cUqWrvBsaeJ23aZEPk1TAYkurjfMbSELfoCXlGA==}
-
   '@types/minimatch@3.0.5':
     resolution: {integrity: sha512-Klz949h02Gz2uZCMGwDUSDS1YBlTdDDgbWHi+81l29tQALUtvz4rAYi5uoVhE5Lagoq6DeqAUlbrHvW/mXDgdQ==}
 
@@ -2017,6 +2008,9 @@ packages:
 
   es-module-lexer@1.7.0:
     resolution: {integrity: sha512-jEQoCwk8hyb2AZziIOLhDqpm5+2ww5uIE6lkO/6jcOCusfk6LhMHpXXfBLXTZ7Ydyt0j4VoUQv6uGNYbdW+kBA==}
+
+  es-toolkit@1.39.10:
+    resolution: {integrity: sha512-E0iGnTtbDhkeczB0T+mxmoVlT4YNweEKBLq7oaU4p11mecdsZpNWOglI4895Vh4usbQ+LsJiuLuI2L0Vdmfm2w==}
 
   es6-error@4.1.1:
     resolution: {integrity: sha512-Um/+FxMr9CISWh0bi5Zv0iOD+4cFh5qLeks1qhAopKVAJw3drgKbKySikp7wGhDL0HPeaja0P5ULZrxLkniUVg==}
@@ -5889,12 +5883,6 @@ snapshots:
 
   '@types/har-format@1.2.16': {}
 
-  '@types/lodash-es@4.17.12':
-    dependencies:
-      '@types/lodash': 4.17.20
-
-  '@types/lodash@4.17.20': {}
-
   '@types/minimatch@3.0.5': {}
 
   '@types/node@24.3.0':
@@ -6518,6 +6506,8 @@ snapshots:
       is-arrayish: 0.2.1
 
   es-module-lexer@1.7.0: {}
+
+  es-toolkit@1.39.10: {}
 
   es6-error@4.1.1: {}
 
