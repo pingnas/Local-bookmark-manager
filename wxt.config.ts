@@ -22,9 +22,7 @@ export default defineConfig({
       "history",
       "tabs",
       "favicon",
-      'storage',
       'tabGroups',
-      "contextMenus",
     ],
     host_permissions: [
       "https://*/*",

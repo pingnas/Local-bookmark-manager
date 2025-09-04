@@ -2,7 +2,7 @@
   "name": "wxt-vue-starter",
   "description": "Local bookmark manager",
   "license": "MIT",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/pingnas/Local-bookmark-manager"
@@ -32,20 +32,20 @@
     "normalize.css": "^8.0.1",
     "pinyin-match": "^1.2.8",
     "rxjs": "^7.8.2",
-    "sass": "1.91.0",
+    "sass": "1.92.0",
     "uuid": "^11.1.0",
-    "vue": "3.5.20",
+    "vue": "3.5.21",
     "vue-draggable-plus": "^0.6.0",
     "vue-icons-plus": "^0.1.8"
   },
   "devDependencies": {
-    "@types/chrome": "^0.1.4",
+    "@types/chrome": "^0.1.6",
     "@vitejs/plugin-vue-jsx": "5.1.1",
     "@wxt-dev/auto-icons": "^1.1.0",
-    "@wxt-dev/module-vue": "1.0.2",
+    "@wxt-dev/module-vue": "1.0.3",
     "typescript": "5.9.2",
     "vite-plugin-remove-console": "^2.2.0",
     "vue-tsc": "3.0.6",
-    "wxt": "0.20.8"
+    "wxt": "0.20.10"
   }
 }
