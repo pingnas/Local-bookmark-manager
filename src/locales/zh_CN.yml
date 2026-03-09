@@ -1,0 +1,106 @@
+Popup:
+  add: 添加
+  open: 打开
+  text:
+    webdav: WebDAV
+    configuration: 配置
+    clear_configuration: 清除配置
+    export_config: 导出配置
+    import_config: 导入配置
+HistoryGroup:
+  title: 历史书签管理
+  btn:
+    clear: 清空
+    import_replace: 覆盖导入
+    export: 导出
+    import_merge: 合并导入
+  notify:
+    delete_success: 删除成功!
+    clear_success: 清空成功!
+    import_success: 导入成功!
+    import_error_format: 导入失败，请检查文件格式!
+    export_success: 导出成功!
+    update_success: 修改成功!
+  confirm:
+    delete: 确认删除?
+    second_confirm: 二次确认！
+NewTab:
+  windows: 窗口
+  rename: 重命名
+  newfolder: 新建文件夹
+  openAllFolder: 打开所有书签
+  setHomepage: 设置为主页
+  search_placeholder: "输入标题/网址搜索书签，选中后会在新标签页打开。   按ctrl+enter会网页搜索"
+  update_bookmark: 更新书签
+  required: 必填项
+  open_in_new_tab: 新标签页打开
+  open_this_tab: 此标签页打开
+  invalidUrl: 请输入有效的URL
+  btn:
+    close: 关闭
+    confirm: 确认
+    reset: 重置
+    delete: 删除
+  confirm:
+    delete_bookmark_folder_title: "注意 : 这个操作会将所有子文件夹及其书签一并删除，请慎重操作"
+    delete: 确认删除?
+    openAllFolder_title: "注意 : 这会打开当前文件夹下所有书签, 太多书签可能会导致浏览器卡死, 慎重操作"
+    delete_bookmark_title: 请慎重操作！
+    newfolder_success: 书签文件夹创建成功!
+  notify:
+    delete_bookmark_folder_success: 书签文件夹删除成功!
+    update_success: 更新成功!
+    delete_success: 删除成功!
+    clear_success: 清理成功!
+    rename_success: 重命名成功!
+  text:
+    total: 合计
+    total_boookmark: 个书签
+    of_bookmark: 的书签
+    success_move_to: 成功移动到
+    bookmark_can_drag: 书签是否可以拖拽换位
+    yes: 是
+    no: 否
+    bookmark_can_drag_to_folder: 书签是否可以拖拽到文件夹
+    search_engine: 默认搜索引擎
+    baidu: 百度
+    google: 谷歌
+    other: 其他
+    invalid_search_engine: 请输入其他有效搜索引擎
+    enable_default_context_menu: 启用默认鼠标右键菜单
+    delete_empty_folder: 删除空文件夹
+    update_bg: 更新背景
+    setting: 设置
+    active_tab: 活动标签页
+    no_name_tab_group: 未命名标签组
+    tab_group: 标签组
+    history: 历史记录
+    bookmark: 书签
+    newName: 新名字
+    addFolder: 文件夹名
+    bookmarkName: 书签名称
+    bookmarkUrl: 书签网址
+bg:
+  title: 背景管理
+  btn:
+    save: 保存
+    upload: 上传
+    hide: 收起
+    show: 显示
+    clear: 清空
+    add: 添加
+    setting: 设置
+  text:
+    upload_input: 请输入网络地址
+  tab:
+    default: 默认背景
+    location: 上传背景
+    internet: 网络背景
+  notify:
+    upload_success: 上传成功!
+    upload_error_format: 上传失败，请检查文件格式!
+    max_size: 请上传小于15M的图片!
+    save_success: 保存成功!
+    clear_success: 清空成功!
+    add_success: 添加成功!
+    add_error: 请检查链接文件格式，必须为图片或者视频！

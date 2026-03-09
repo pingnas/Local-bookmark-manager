@@ -1,0 +1,106 @@
+Popup:
+  add: Add
+  open: Open
+  text:
+    webdav: WebDAV
+    configuration: Configuration
+    clear_configuration: Clear Configuration
+    export_config: Export Configuration
+    import_config: Import Configuration
+HistoryGroup:
+  title: History Bookmark Management
+  btn:
+    clear: Clear
+    import_replace: Import and Replace
+    export: Export
+    import_merge: Import and Merge
+  notify:
+    delete_success: Deleted successfully!
+    clear_success: Cleared successfully!
+    import_success: Imported successfully!
+    import_error_format: Import failed, please check the file format!
+    export_success: Exported successfully!
+    update_success: Updated successfully!
+  confirm:
+    delete: Confirm deletion?
+    second_confirm: Double confirmation!
+NewTab:
+  windows: Windows
+  rename: Rename
+  newfolder: New Folder
+  openAllFolder: Open All Bookmarks
+  setHomepage: Set as Homepage
+  search_placeholder: "Enter title/URL to search bookmarks, selected will open in a new tab. Press ctrl+enter for web search"
+  update_bookmark: Update Bookmark
+  required: Required
+  open_in_new_tab: Open in New Tab
+  open_this_tab: Open in This Tab
+  invalidUrl: Please enter a valid URL
+  btn:
+    close: Close
+    confirm: Confirm
+    reset: Reset
+    delete: Delete
+  confirm:
+    delete_bookmark_folder_title: "Note: This operation will delete all subfolders and their bookmarks, please proceed with caution"
+    delete: Confirm deletion?
+    openAllFolder_title: "Note: This will open all bookmarks in the current folder, too many bookmarks may cause the browser to freeze, proceed with caution"
+    delete_bookmark_title: Please proceed with caution!
+    newfolder_success: Bookmark folder created successfully!
+  notify:
+    delete_bookmark_folder_success: Bookmark folder deleted successfully!
+    update_success: Updated successfully!
+    delete_success: Deleted successfully!
+    clear_success: Cleared successfully!
+    rename_success: Renamed successfully!
+  text:
+    total: Total
+    total_boookmark: bookmarks
+    of_bookmark: “'s bookmarks”
+    success_move_to: Successfully moved to
+    bookmark_can_drag: Can bookmarks be dragged to reposition
+    yes: Yes
+    no: No
+    bookmark_can_drag_to_folder: Can bookmarks be dragged to folders
+    search_engine: Default search engine
+    baidu: Baidu
+    google: Google
+    other: Other
+    invalid_search_engine: Please enter a valid alternative search engine
+    enable_default_context_menu: Enable default right-click menu
+    delete_empty_folder: Delete empty folder
+    update_bg: Update background
+    setting: Settings
+    active_tab: Active Tab
+    no_name_tab_group: Unnamed Tab Group
+    tab_group: Tab Group
+    history: History
+    bookmark: Bookmark
+    newName: New Name
+    addFolder: Folder Name
+    bookmarkName: Bookmark Name
+    bookmarkUrl: Bookmark URL
+bg:
+  title: Background Management
+  btn:
+    save: Save
+    upload: Upload
+    hide: Hide
+    show: Show
+    clear: Clear
+    add: Add
+    setting: Settings
+  text:
+    upload_input: Please enter network address
+  tab:
+    default: Default Background
+    location: Upload Background
+    internet: Internet Background
+  notify:
+    upload_success: Uploaded successfully!
+    upload_error_format: Upload failed, please check the file format!
+    max_size: Please upload images less than 15MB!
+    save_success: Saved successfully!
+    clear_success: Cleared successfully!
+    add_success: Added successfully!
+    add_error: Please check the link file format, must be an image or video!

@@ -1,0 +1,36 @@
+@use '../theme.scss' as *;
+
+.ag-table {
+    .ag-row {
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+
+        &:has(.full-widget-group) {
+            justify-content: center;
+            font-size: 16px;
+            color: $primary;
+            font-weight: 600;
+        }
+
+        .full-widget-row,
+        .full-widget-group {
+            align-items: center;
+            gap: 30px;
+
+            .url {
+                color: blue;
+            }
+        }
+
+        img {
+            user-select: none;
+        }
+    }
+
+
+
+    .ag-layout-normal {
+        user-select: auto !important;
+    }
+}

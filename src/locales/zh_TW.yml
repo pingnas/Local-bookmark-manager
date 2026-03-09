@@ -1,0 +1,106 @@
+Popup:
+  add: 添加
+  open: 打開
+  text:
+    webdav: WebDAV
+    configuration: 配置
+    clear_configuration: 清除配置
+    export_config: 導出配置
+    import_config: 導入配置
+HistoryGroup:
+  title: 歷史書籤管理
+  btn:
+    clear: 清空
+    import_replace: 覆蓋導入
+    export: 導出
+    import_merge: 合併導入
+  notify:
+    delete_success: 刪除成功!
+    clear_success: 清空成功!
+    import_success: 導入成功!
+    import_error_format: 導入失敗，請檢查文件格式!
+    export_success: 導出成功!
+    update_success: 修改成功!
+  confirm:
+    delete: 確認刪除?
+    second_confirm: 二次確認！
+NewTab:
+  windows: 窗口
+  rename: 重命名
+  newfolder: 新建文件夾
+  openAllFolder: 打開所有書籤
+  setHomepage: 設置為主頁
+  search_placeholder: "輸入標題/網址搜索書籤，選中後會在新標籤頁打開。   按ctrl+enter會網頁搜索"
+  update_bookmark: 更新書籤
+  required: 必填項
+  open_in_new_tab: 新標籤頁打開
+  open_this_tab: 此標籤頁打開
+  invalidUrl: 請輸入有效的URL
+  btn:
+    close: 關閉
+    confirm: 確認
+    reset: 重置
+    delete: 刪除
+  confirm:
+    delete_bookmark_folder_title: "注意 : 這個操作會將所有子文件夾及其書籤一併刪除，請慎重操作"
+    delete: 確認刪除?
+    openAllFolder_title: "注意 : 這會打開當前文件夾下所有書籤, 太多書籤可能會導致瀏覽器卡死, 慎重操作"
+    delete_bookmark_title: 請慎重操作！
+    newfolder_success: 書籤文件夾創建成功!
+  notify:
+    delete_bookmark_folder_success: 書籤文件夾刪除成功!
+    update_success: 更新成功!
+    delete_success: 刪除成功!
+    clear_success: 清理成功!
+    rename_success: 重命名成功!
+  text:
+    total: 合計
+    total_boookmark: 個書籤
+    of_bookmark: 的書籤
+    success_move_to: 成功移動到
+    bookmark_can_drag: 書籤是否可以拖拽換位
+    yes: 是
+    no: 否
+    bookmark_can_drag_to_folder: 書籤是否可以拖拽到文件夾
+    search_engine: 默認搜索引擎
+    baidu: 百度
+    google: 谷歌
+    other: 其他
+    invalid_search_engine: 請輸入其他有效搜索引擎
+    enable_default_context_menu: 啟用默認鼠標右鍵菜單
+    delete_empty_folder: 刪除空文件夾
+    update_bg: 更新背景
+    setting: 設置
+    active_tab: 活動標籤頁
+    no_name_tab_group: 未命名標籤組
+    tab_group: 標籤組
+    history: 歷史記錄
+    bookmark: 書籤
+    newName: 新名字
+    addFolder: 文件夾名
+    bookmarkName: 書籤名稱
+    bookmarkUrl: 書籤網址
+bg:
+  title: 背景管理
+  btn:
+    save: 保存
+    upload: 上傳
+    hide: 收起
+    show: 顯示
+    clear: 清空
+    add: 添加
+    setting: 設置
+  text:
+    upload_input: 請輸入網絡地址
+  tab:
+    default: 默認背景
+    location: 上傳背景
+    internet: 網絡背景
+  notify:
+    upload_success: 上傳成功!
+    upload_error_format: 上傳失敗，請檢查文件格式!
+    max_size: 請上傳小於15M的圖片!
+    save_success: 保存成功!
+    clear_success: 清空成功!
+    add_success: 添加成功!
+    add_error: 請檢查鏈接文件格式，必須為圖片或者視頻！

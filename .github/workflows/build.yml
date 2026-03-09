@@ -1,0 +1,41 @@
+name: build
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  releaser:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v5
+
+      - name: setup-node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: build
+        run: |
+          pnpm i
+          pnpm run build
+          cd .output/chrome-mv3
+          zip -r build.zip *
+          ls -l
+
+      - name: Upload ZIP to GitHub Release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.TOKEN }}
+          file: .output/chrome-mv3/build.zip
+          asset_name: LocalBookmarkManager-${{ github.ref_name }}.zip
+          tag: ${{ github.ref }}
+          overwrite: true
