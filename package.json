@@ -18,34 +18,34 @@
     "postinstall": "wxt prepare"
   },
   "dependencies": {
-    "@imengyu/vue3-context-menu": "^1.5.2",
-    "@opentiny/vue": "^3.27.0",
-    "@vueuse/core": "^14.1.0",
-    "@wxt-dev/i18n": "^0.2.4",
-    "ag-grid-community": "^34.3.1",
-    "ag-grid-vue3": "^34.3.1",
+    "@imengyu/vue3-context-menu": "^1.5.4",
+    "@opentiny/vue": "^3.29.0",
+    "@vueuse/core": "^14.2.1",
+    "@wxt-dev/i18n": "^0.2.5",
+    "ag-grid-community": "^35.1.0",
+    "ag-grid-vue3": "^35.1.0",
     "dayjs": "^1.11.19",
-    "dexie": "^4.2.1",
-    "es-toolkit": "^1.42.0",
+    "dexie": "^4.3.0",
+    "es-toolkit": "^1.45.1",
     "lottie-web": "^5.13.0",
     "miao-lang": "^1.0.5",
     "normalize.css": "^8.0.1",
-    "pinyin-match": "^1.2.9",
+    "pinyin-match": "^1.2.10",
     "rxjs": "^7.8.2",
-    "sass": "1.94.2",
+    "sass": "1.97.3",
     "uuid": "^13.0.0",
-    "vue": "3.5.25",
-    "vue-draggable-plus": "^0.6.0",
-    "vue-icons-plus": "^0.1.8"
+    "vue": "3.5.29",
+    "vue-draggable-plus": "^0.6.1",
+    "vue-icons-plus": "^0.1.9"
   },
   "devDependencies": {
-    "@types/chrome": "^0.1.31",
-    "@vitejs/plugin-vue-jsx": "5.1.2",
-    "@wxt-dev/auto-icons": "^1.1.0",
+    "@types/chrome": "^0.1.37",
+    "@vitejs/plugin-vue-jsx": "5.1.4",
+    "@wxt-dev/auto-icons": "^1.1.1",
     "@wxt-dev/module-vue": "1.0.3",
     "typescript": "5.9.3",
     "vite-plugin-remove-console": "^2.2.0",
-    "vue-tsc": "3.1.5",
-    "wxt": "0.20.11"
+    "vue-tsc": "3.2.5",
+    "wxt": "0.20.18"
   }
 }

@@ -16,10 +16,6 @@ A powerful browser extension that helps you efficiently manage bookmarks, browsi
 - **Multilingual Support**: English, Simplified Chinese, and Traditional Chinese
 - **Global Search**: Quickly search bookmarks and browsing history
 
-<!-- ## Screenshots -->
-
-<!-- ![alt text](img/README/1.gif) -->
-
 ## Usage Guide
 
 ### Basic Operations

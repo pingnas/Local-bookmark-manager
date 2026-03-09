@@ -5,7 +5,6 @@ import { Button, DialogBox } from "@opentiny/vue";
 import { VNode } from "vue";
 import { Subscription } from "rxjs";
 import { DialogCloseService, DialogOpenService } from "./service";
-import LottieAni from "../widget/lottie-ani";
 import dayjs, { Dayjs } from "dayjs";
 
 
@@ -56,32 +55,6 @@ class DialogManager {
         }
     }
 
-    /** 打开loading 
-     * 
-     * let id = dialogManager.openLoading()
-     * 
-     * dialogManager.close(id)
-    */
-    openLoading(): string {
-        let id = uuidv4();
-        const div = document.createElement("div");
-        document.body.appendChild(div);
-        const app = createApp(LottieAni);
-        app.mount(div);
-        Object.assign(this.apps, { [id]: new DialogApp({ id: id, app: app, wrap: div }) })
-        return id;
-    }
-    closeLoading(id: string) {
-        const app = this.apps[id];
-        if (app) {
-            const fn = () => {
-                app.app.unmount();
-                app.wrap.remove();
-                this.apps = omit(this.apps, [id])
-            }
-            fn()
-        }
-    }
 }
 
 export const dialogManager = new DialogManager();
