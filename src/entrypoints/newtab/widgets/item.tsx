@@ -1,4 +1,4 @@
-import { getFaviconUrl, getName, openUrl, openUrlInNewTab, useMyStore } from '@/entrypoints/popup/common/util';
+import { getFaviconUrl, getName, openUrl, openUrlInNewTab, useMyStore } from '@/entrypoints/common/util';
 import { TinyNotify } from '@opentiny/vue';
 import { SortableEvent, VueDraggable } from 'vue-draggable-plus';
 import { i_del } from '../dialog/i-del';
@@ -100,14 +100,15 @@ export default defineComponent({
             }}
         >
             {
-                this.row?.map(x => {
+                this.row?.map((x, i) => {
                     if (x.children) return <></>;
 
                     const title = getName(x);
                     const url = x.url;
                     return <div
                         key={x.id}
-                        class={{ 'item': true, }}
+                        class={{ 'item': true, 'item-appear': true }}
+                        style={{ animationDelay: `${i * 20}ms`, }}
                         onDblclick={(e: MouseEvent) => {
                             openUrl(x.url)
                         }}

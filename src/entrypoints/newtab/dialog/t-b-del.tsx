@@ -1,5 +1,5 @@
-import { dialogManager, TreeBookmarks } from "@/entrypoints/popup/common/util";
-import PopConfirm from "@/entrypoints/popup/common/widget/pop-confirm";
+import { dialogManager, TreeBookmarks } from "@/entrypoints/common/util";
+import PopConfirm from "@/entrypoints/common/widget/pop-confirm";
 import { TinyNotify, Button } from "@opentiny/vue";
 
 export const t_b_del = (obj: {

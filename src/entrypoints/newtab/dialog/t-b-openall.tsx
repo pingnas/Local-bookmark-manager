@@ -1,4 +1,4 @@
-import { TreeBookmarks, getAllBookmarkUrls, dialogManager, createUrlToGroup } from "@/entrypoints/popup/common/util";
+import { TreeBookmarks, getAllBookmarkUrls, dialogManager, createUrlToGroup } from "@/entrypoints/common/util";
 import { Button } from "@opentiny/vue";
 
 export const t_b_openall = (obj: {

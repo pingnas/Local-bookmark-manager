@@ -1,4 +1,4 @@
-import { dialogManager, TreeBookmarks } from "@/entrypoints/popup/common/util";
+import { dialogManager, TreeBookmarks } from "@/entrypoints/common/util";
 import { Form, FormItem, Input, Button, TinyNotify } from "@opentiny/vue";
 
 export const t_b_addFolder = (obj: {

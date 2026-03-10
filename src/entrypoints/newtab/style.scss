@@ -8,11 +8,46 @@ img {
     -webkit-user-select: none;
 }
 
+@keyframes fade-in-up {
+    0% {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tree-appear,
+.item-appear {
+    opacity: 0;
+    transform: translateY(6px);
+    animation: fade-in-up 220ms ease forwards;
+    will-change: opacity, transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tree-appear,
+    .item-appear {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+}
+
 
 .left,
 .right {
     display: flex;
     flex-direction: column;
+    background: rgba(255, 255, 255, 0.1);
+    /* 核心：模糊背景，让文字后的区域“糊”掉 */
+    backdrop-filter: blur(12px);
+    /* 阴影改为更柔和的深色，以承载视觉深度 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    margin-top: 5px;
 
     .bookmarks-item {
         border-radius: 8px;
@@ -27,11 +62,12 @@ img {
         cursor: pointer;
         margin-bottom: 4px;
         transition: all 0.2s ease;
-        color: $text-secondary;
+        color: black;
+
 
         &:hover {
             background-color: $primary-light;
-            color: $primary;
+            color: black;
         }
 
         &.tree-select {
@@ -86,28 +122,35 @@ img {
     .item {
         padding: 16px;
         border-radius: 12px;
-        background: transparent;
-        border: 1px solid $primary-border;
-        box-shadow: 0 2px 8px $shadow-sm;
         list-style: none;
         display: flex;
         align-items: center;
         cursor: pointer;
-        transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         gap: 10px;
 
+        /* --- 关键调整：毛玻璃效果 --- */
+        /* 使用半透明白色/黑色作为背景 */
+        background: rgba(255, 255, 255, 0.1);
+        /* 核心：模糊背景，让文字后的区域“糊”掉 */
+        backdrop-filter: blur(12px);
+        /* 增加微弱的内发光边框，增加质感 */
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        /* 阴影改为更柔和的深色，以承载视觉深度 */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
         &:hover {
-            border-color: $primary-border-hover;
             box-shadow: 0 8px 16px $primary-shadow-light;
-            transform: translateY(-2px) scale(1.05);
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.4);
         }
 
         .title {
             font-size: 16px;
             font-weight: 500;
             line-height: 1.4;
-            color: $text-primary;
+            color: black;
             margin-bottom: 8px;
             display: -webkit-box;
             -webkit-box-orient: vertical;
@@ -122,11 +165,10 @@ img {
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
-            color: $text-muted;
 
             a {
                 text-decoration: none;
-                color: $primary;
+                color: black;
 
                 &:hover {
                     text-decoration: underline;
@@ -160,7 +202,7 @@ img {
 
 .search-dropdown {
     .tiny-autocomplete-suggestion__wrap {
-        max-height: 500px !important;
+        max-height: 600px !important;
     }
 
     .bookmark-item {
@@ -189,4 +231,49 @@ img {
             }
         }
     }
+}
+
+.wrap-bg {
+    /* 基础背景样式 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    opacity: 0.7;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #111111;
+    transform: translateZ(0);
+    will-change: background-image;
+
+    /* 给背景加一层深色蒙版，让前景文字更清晰 */
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        var(--bg-url);
+
+    /* 初始动画 */
+    transition: background-image 0.2s ease-out;
+    // /* 关键点 1：加模糊滤镜，淡化细节干扰 */
+    // filter: blur(8px) brightness(0.6);
+
+    // /* 关键点 2：稍微缩放一点，抵消模糊带来的边缘白边 */
+    // transform: scale(1.1);
+}
+
+.shortcut {
+    display: inline-flex;
+    border-radius: 12px;
+
+    padding: 5px;
+    /* 使用半透明白色/黑色作为背景 */
+    background: rgba(255, 255, 255, 0.1);
+    /* 核心：模糊背景，让文字后的区域“糊”掉 */
+    backdrop-filter: blur(12px);
+    /* 增加微弱的内发光边框，增加质感 */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* 阴影改为更柔和的深色，以承载视觉深度 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }

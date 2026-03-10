@@ -23,7 +23,7 @@ export const useLayoutSize = () => {
         return {
             width: _treeMenuWidth,
             padding: '12px',
-            height: `calc(100vh - 12 * 2px)`,
+            height: `calc(100vh - 100px - 12px*3 - 5px)`,
             minHeight: _treeMinHeight
         }
     });
@@ -41,16 +41,16 @@ export const useLayoutSize = () => {
     const centerStyle = computed<CSSProperties>(() => {
 
         return {
-            width: `calc(100vw - ${leftStyle.value?.width} - ${rightStyle.value?.width} - 12px * 4)`,
+            width: `calc(100vw - ${leftStyle.value?.width}  - 12px * 3)`,
         }
     });
 
     const centerBottomStyle = computed<CSSProperties>(() => {
 
         return {
-            padding: '12px',
-            height: `calc(100vh - 100px - 12px*3)`,
-            minHeight: `calc(${_treeMinHeight} - 100px - 12px)`
+            padding: '5px 12px',
+            height: `calc(100vh - 100px - 12px*1 - 5px *2)`,
+            minHeight: `calc(${_treeMinHeight} - 100px - 12px )`
         }
     });
     return { leftStyle, rightStyle, centerStyle, isMobile, centerBottomStyle }

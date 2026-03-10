@@ -1,4 +1,4 @@
-import { dialogManager } from "@/entrypoints/popup/common/util";
+import { dialogManager } from "@/entrypoints/common/util";
 import { Button, Form, FormItem, Input, TinyNotify } from "@opentiny/vue";
 
 export const i_rename = (obj: {

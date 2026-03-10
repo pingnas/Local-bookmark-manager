@@ -1,5 +1,5 @@
 import { useDebounceFn } from "@vueuse/core";
-import { useBookmarks } from "@/entrypoints/popup/common/data";
+import { useBookmarks } from "@/entrypoints/common/data";
 import { selId } from "./use-data";
 
 export const useSelectRow = () => {

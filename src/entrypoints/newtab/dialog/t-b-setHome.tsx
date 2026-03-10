@@ -1,4 +1,4 @@
-import { reload, TreeBookmarks, useMyStore } from "@/entrypoints/popup/common/util";
+import { reload, TreeBookmarks, useMyStore } from "@/entrypoints/common/util";
 
 export const t_b_setHome = (obj: {
     x: TreeBookmarks,

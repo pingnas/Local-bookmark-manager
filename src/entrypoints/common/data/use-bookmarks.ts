@@ -112,7 +112,7 @@ export const useBookmarks = () => {
     const left = computed(() => {
 
         const [firstTwo, others] = splitObject(bookmarks_group.value, 2);
-        return firstTwo;
+        return bookmarks_group.value;
     })
     const right = computed(() => {
         const [firstTwo, others] = splitObject(bookmarks_group.value, 2);

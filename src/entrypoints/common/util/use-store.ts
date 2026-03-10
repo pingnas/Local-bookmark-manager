@@ -1,7 +1,6 @@
-import { BgConfig, BgType, miaoStorage } from "@/entrypoints/popup/common/util";
+import { BgConfig, BgType, miaoStorage } from "@/entrypoints/common/util";
 import { isNil, omit } from "es-toolkit/compat";
 import { v4 as uuidv4 } from 'uuid';
-import { UseHistoryGroup } from "../../use";
 
 export class UseStore {
     public id = uuidv4()
@@ -19,7 +18,7 @@ export class UseStore {
         if (!isNil(itemDrag)) {
             return itemDrag;
         } else {
-            await miaoStorage.set<boolean>('itemDrag', false);
+            await miaoStorage.set<boolean>('itemDrag', true);
             return false;
         }
     }
@@ -35,7 +34,7 @@ export class UseStore {
         if (!isNil(itemDragToTree)) {
             return itemDragToTree;
         } else {
-            await miaoStorage.set<boolean>('itemDragToTree', false);
+            await miaoStorage.set<boolean>('itemDragToTree', true);
             return false;
         }
     }
@@ -125,100 +124,6 @@ export class UseStore {
         await miaoStorage.set<string>('homeTreeParentId', v);
     }
 
-    // string
-    // 历史记录
-    async getHistoryGroup() {
-        const historyGroup = await miaoStorage.get<{ [id: string]: UseHistoryGroup }>('historyGroup');
-
-        if (!isNil(historyGroup)) {
-            return historyGroup;
-        } else {
-            await this.setHistoryGroup({});
-            this.updateId()
-            return {};
-        }
-    }
-
-    async setHistoryGroup(v: { [id: string]: UseHistoryGroup }) {
-        await miaoStorage.set<{ [id: string]: UseHistoryGroup }>('historyGroup', v);
-        this.updateId()
-    }
-
-    async removeHistoryGroup(id: string) {
-        const historyGroup = await miaoStorage.get<{ [id: string]: UseHistoryGroup }>('historyGroup');
-        await miaoStorage.set<{ [id: string]: UseHistoryGroup }>('historyGroup', omit(historyGroup, [id]));
-        this.updateId()
-    }
-    async addHistoryGroup(v: { [id: string]: UseHistoryGroup }) {
-        const historyGroup = await miaoStorage.get<{ [id: string]: UseHistoryGroup }>('historyGroup');
-        await miaoStorage.set<{ [id: string]: UseHistoryGroup }>('historyGroup', { ...historyGroup, ...v });
-        this.updateId()
-    }
-
-    // string
-    // 背景类型
-    async getBgTab() {
-        const bgTab = await miaoStorage.get<BgType>('bgTab');
-
-        if (!isNil(bgTab)) {
-            return bgTab;
-        } else {
-            await this.setBgTab(BgType.Default);
-            return BgType.Default
-        }
-    }
-
-    async setBgTab(v: BgType) {
-        await miaoStorage.set<BgType>('bgTab', v);
-    }
-
-    // object
-    // 背景配置
-    async getBgModel() {
-        const bgModel = await miaoStorage.get<{ [k: string]: BgConfig }>('bgModel');
-        if (!isNil(bgModel)) {
-            return bgModel;
-        } else {
-            await this.setBgModel({
-                [BgType.Default]: new BgConfig({}),
-                [BgType.Location]: new BgConfig({}),
-                [BgType.Internet]: new BgConfig({}),
-            });
-            return {
-                [BgType.Default]: new BgConfig({}),
-                [BgType.Location]: new BgConfig({}),
-                [BgType.Internet]: new BgConfig({}),
-            }
-        }
-    }
-    async setBgModel(v: { [k: string]: BgConfig }) {
-        await miaoStorage.set<{ [k: string]: BgConfig }>('bgModel', v);
-    }
-    async clearBg() {
-        await this.setBgTab(BgType.Default);
-        await this.setBgModel({
-            [BgType.Default]: new BgConfig({}),
-            [BgType.Location]: new BgConfig({}),
-            [BgType.Internet]: new BgConfig({}),
-        });
-    }
-
-    // int
-    // 启用默认右键菜单
-    async getOpacity() {
-        const bgOpacity = await miaoStorage.get<number>('bgOpacity');
-
-
-        if (!isNil(bgOpacity)) {
-            return bgOpacity;
-        } else {
-            await miaoStorage.set<number>('bgOpacity', 0.4);
-            return 0.4;
-        }
-    }
-    async setOpacity(v: number) {
-        await miaoStorage.set<number>('bgOpacity', v);
-    }
 }
 
 export const useMyStore = reactive(new UseStore());

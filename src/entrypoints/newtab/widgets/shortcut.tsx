@@ -1,9 +1,5 @@
-import { openUrlInNewTab } from "@/entrypoints/popup/common/util"
-import { AiOutlineAppstore, AiOutlineSetting } from "vue-icons-plus/ai"
-import { BiHistory } from "vue-icons-plus/bi"
-import { IoExtensionPuzzleOutline } from "vue-icons-plus/io"
-import { LiaDownloadSolid } from "vue-icons-plus/lia"
-import Action from "./action"
+import { openUrlInNewTab } from "@/entrypoints/common/util"
+import { RiApps2Line, RiDownload2Line, RiFlagLine, RiHistoryLine, RiPuzzleLine, RiSettings4Line } from "vue-icons-plus/ri"
 
 export default defineComponent({
     setup(p, { attrs }) {
@@ -13,15 +9,24 @@ export default defineComponent({
                 {...attrs}
                 style={{
                     cursor: 'pointer',
-                    display: 'flex',
                     gap: '10px',
                 }}
+                class={'shortcut'}
             >
-                <Action isDrag={false} />
                 {
-                    h(IoExtensionPuzzleOutline,
+                    h(RiFlagLine,
                         {
-                            color: '#6d28d9',
+                            color: 'black',
+                            onClick: () => {
+                                openUrlInNewTab('chrome://flags/');
+                            }
+                        }
+                    )
+                }
+                {
+                    h(RiPuzzleLine,
+                        {
+                            color: 'black',
                             onClick: () => {
                                 openUrlInNewTab('chrome://extensions/');
                             }
@@ -29,9 +34,9 @@ export default defineComponent({
                     )
                 }
                 {
-                    h(AiOutlineSetting,
+                    h(RiSettings4Line,
                         {
-                            color: '#6d28d9',
+                            color: 'black',
                             onClick: () => {
                                 openUrlInNewTab('chrome://settings/');
                             }
@@ -39,9 +44,9 @@ export default defineComponent({
                     )
                 }
                 {
-                    h(LiaDownloadSolid,
+                    h(RiDownload2Line,
                         {
-                            color: '#6d28d9',
+                            color: 'black',
                             onClick: () => {
                                 openUrlInNewTab('chrome://downloads/');
                             }
@@ -49,9 +54,9 @@ export default defineComponent({
                     )
                 }
                 {
-                    h(BiHistory,
+                    h(RiHistoryLine,
                         {
-                            color: '#6d28d9',
+                            color: 'black',
                             onClick: () => {
                                 openUrlInNewTab('chrome://history/');
                             }
@@ -59,9 +64,9 @@ export default defineComponent({
                     )
                 }
                 {
-                    h(AiOutlineAppstore,
+                    h(RiApps2Line,
                         {
-                            color: '#6d28d9',
+                            color: 'black',
                             onClick: () => {
                                 openUrlInNewTab('chrome://apps/');
                             }

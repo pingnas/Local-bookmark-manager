@@ -1,5 +1,5 @@
-import { searchBookmarks, searchBookmarksItem, useBookmarks } from '@/entrypoints/popup/common/data';
-import { getFaviconUrl, openUrl, openUrlInNewTab, useMyStore } from '@/entrypoints/popup/common/util';
+import { searchBookmarks, searchBookmarksItem, useBookmarks } from '@/entrypoints/common/data';
+import { getFaviconUrl, openUrl, openUrlInNewTab, useMyStore } from '@/entrypoints/common/util';
 import { Autocomplete } from "@opentiny/vue";
 import PinyinMatch from 'pinyin-match';
 

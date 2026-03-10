@@ -31,7 +31,7 @@ export default defineConfig({
     ],
     web_accessible_resources: [
       {
-        "resources": ["_favicon/*", "assets/*.json", "background.js"],
+        "resources": ["_favicon/*", "background.js"],
         "matches": ["<all_urls>"]
       }
     ],

@@ -1,6 +1,6 @@
 import { PropType } from '#imports';
-import { BookmarksGroup } from '@/entrypoints/popup/common/data';
-import { getName, TreeBookmarks, treeBookmarksLevel, useMyStore } from '@/entrypoints/popup/common/util';
+import { BookmarksGroup } from '@/entrypoints/common/data';
+import { getName, TreeBookmarks, treeBookmarksLevel, useMyStore } from '@/entrypoints/common/util';
 import { RadioButton, RadioGroup, TinyNotify } from '@opentiny/vue';
 import { SortableEvent, VueDraggable } from 'vue-draggable-plus';
 import { t_b_addFolder } from '../dialog/t-b-addFolder';
@@ -33,8 +33,12 @@ export default defineComponent({
         onMounted(async () => {
             homeTreeIdRef.value = await useMyStore.getHomeTreeId();
             selId.value = homeTreeIdRef.value;
+            console.log('11', selId.value);
+
             let HomeTreeParentId = await useMyStore.getHomeTreeParentId();
+            console.log(HomeTreeParentId, p.bookmarks_group);
             if (Object.values(p.bookmarks_group)?.some(x => x.value === HomeTreeParentId)) {
+                console.log(HomeTreeParentId);
                 data.cur_group_id = HomeTreeParentId as any;
             } else {
                 let first: BookmarksGroup = Object.values(p.bookmarks_group)[0];
@@ -76,15 +80,15 @@ export default defineComponent({
     },
     render() {
 
-        const getTemp = (x: TreeBookmarks) => {
+        const getTemp = (x: TreeBookmarks, index: number) => {
 
             let c_count = x.node.children?.reduce((a, b) => {
                 return a + ('url' in b ? 1 : 0)
             }, 0)
 
             let c = <div
-                style={{ paddingLeft: `${x.padding}px`, }}
-                class={[{ 'drag-tree-item': true }]}
+                style={{ paddingLeft: `${x.padding}px`, animationDelay: `${index * 18}ms`, }}
+                class={{ 'drag-tree-item': true, 'tree-appear': true, }}
             >
                 <div
                     class={{ 'bookmarks-item': true, 'tree-select': x.node.id === selId.value, 'ishometree': x.node.id === this.homeTreeIdRef }}
@@ -189,8 +193,8 @@ export default defineComponent({
                         }}
                     >
                         {
-                            this.bookmarks_group && Object.values(this.bookmarks_group).map(x => {
-                                return <RadioButton label={x.value}>{x.label}</RadioButton>
+                            this.bookmarks_group && Object.values(this.bookmarks_group).map((x, i) => {
+                                return <RadioButton label={x.value} text={x.label.split('')[0]}></RadioButton>
                             })
                         }
                     </RadioGroup>
@@ -209,6 +213,7 @@ export default defineComponent({
                     style: {
                         overflowY: 'auto',
                         height: `calc(100% - ${this.bookmarksGroupHeight}px)`,
+
                     },
                     animation: 150,
                     disabled: true,
@@ -244,7 +249,7 @@ export default defineComponent({
                     },
                 }}
             >
-                {this.row?.map(x => getTemp(x))}
+                {this.row?.map((x, i) => getTemp(x, i))}
             </VueDraggable>
         </>;
     }
