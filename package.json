@@ -2,7 +2,7 @@
   "name": "wxt-vue-starter",
   "description": "Local bookmark manager",
   "license": "MIT",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "scripts": {
     "serve": "wxt",
     "dev:firefox": "wxt -b firefox",
