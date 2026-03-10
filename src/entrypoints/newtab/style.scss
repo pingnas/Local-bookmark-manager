@@ -42,9 +42,7 @@ img {
     display: flex;
     flex-direction: column;
     background: rgba(255, 255, 255, 0.1);
-    /* 核心：模糊背景，让文字后的区域“糊”掉 */
     backdrop-filter: blur(12px);
-    /* 阴影改为更柔和的深色，以承载视觉深度 */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     margin-top: 5px;
@@ -129,14 +127,9 @@ img {
         transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         gap: 10px;
 
-        /* --- 关键调整：毛玻璃效果 --- */
-        /* 使用半透明白色/黑色作为背景 */
         background: rgba(255, 255, 255, 0.1);
-        /* 核心：模糊背景，让文字后的区域“糊”掉 */
         backdrop-filter: blur(12px);
-        /* 增加微弱的内发光边框，增加质感 */
         border: 1px solid rgba(255, 255, 255, 0.2);
-        /* 阴影改为更柔和的深色，以承载视觉深度 */
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 
         &:hover {
@@ -234,7 +227,6 @@ img {
 }
 
 .wrap-bg {
-    /* 基础背景样式 */
     position: fixed;
     top: 0;
     left: 0;
@@ -249,18 +241,59 @@ img {
     transform: translateZ(0);
     will-change: background-image;
 
-    /* 给背景加一层深色蒙版，让前景文字更清晰 */
     background-image:
         linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
         var(--bg-url);
 
-    /* 初始动画 */
     transition: background-image 0.2s ease-out;
-    // /* 关键点 1：加模糊滤镜，淡化细节干扰 */
-    // filter: blur(8px) brightness(0.6);
+}
 
-    // /* 关键点 2：稍微缩放一点，抵消模糊带来的边缘白边 */
-    // transform: scale(1.1);
+.windmill-btn {
+    position: fixed;
+    top: 8px;
+    right: 8px;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(20, 20, 20, 0.35);
+    color: rgba(255, 255, 255, 0.9);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+
+    svg {
+        width: 24px;
+        height: 24px;
+        fill: currentColor;
+    }
+
+    &.is-spinning svg {
+        animation: windmill-spin 0.6s ease-out;
+    }
+
+    &:disabled {
+        cursor: wait;
+        opacity: 0.7;
+    }
+
+    &:active {
+        transform: scale(0.98);
+    }
+}
+
+@keyframes windmill-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .shortcut {
@@ -268,12 +301,8 @@ img {
     border-radius: 12px;
 
     padding: 5px;
-    /* 使用半透明白色/黑色作为背景 */
     background: rgba(255, 255, 255, 0.1);
-    /* 核心：模糊背景，让文字后的区域“糊”掉 */
     backdrop-filter: blur(12px);
-    /* 增加微弱的内发光边框，增加质感 */
     border: 1px solid rgba(255, 255, 255, 0.2);
-    /* 阴影改为更柔和的深色，以承载视觉深度 */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }

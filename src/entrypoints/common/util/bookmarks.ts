@@ -1,9 +1,4 @@
 
-/**
- * 打平书签树
- * @param x 
- * @returns 
- */
 export const bookmarksLevel = (x: BookmarkTreeNode,) => {
     let arr: BookmarkTreeNode[] = [];
 
@@ -20,11 +15,6 @@ export const bookmarksLevel = (x: BookmarkTreeNode,) => {
     return arr;
 }
 
-/**
- * 打平书签树 加上层级
- * @param x 
- * @returns 
- */
 export const treeBookmarksLevel = (x: BookmarkTreeNode,) => {
     let arr: TreeBookmarks[] = [];
 

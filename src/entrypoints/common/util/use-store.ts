@@ -1,5 +1,5 @@
-import { BgConfig, BgType, miaoStorage } from "@/entrypoints/common/util";
-import { isNil, omit } from "es-toolkit/compat";
+import { miaoStorage } from "@/entrypoints/common/util";
+import { isNil } from "es-toolkit/compat";
 import { v4 as uuidv4 } from 'uuid';
 
 export class UseStore {
@@ -10,8 +10,6 @@ export class UseStore {
         }, 10);
     }
 
-    // bool
-    // item drag
     async getItemDrag() {
         const itemDrag = await miaoStorage.get<boolean>('itemDrag');
 
@@ -26,8 +24,6 @@ export class UseStore {
         await miaoStorage.set<boolean>('itemDrag', v);
     }
 
-    // bool
-    // item drag to tree
     async getItemDragToTree() {
         const itemDragToTree = await miaoStorage.get<boolean>('itemDragToTree');
 
@@ -42,8 +38,6 @@ export class UseStore {
         await miaoStorage.set<boolean>('itemDragToTree', v);
     }
 
-    // bool
-    // 搜索引擎
     async getSearchEngines() {
         const searchEngines = await miaoStorage.get<string>('searchEngines');
 
@@ -58,8 +52,6 @@ export class UseStore {
         await miaoStorage.set<string>('searchEngines', v);
     }
 
-    // string
-    // 自定义搜索引擎
     async getOtherSearchEngines() {
         const otherSearchEngines = await miaoStorage.get<string>('otherSearchEngines');
 
@@ -75,8 +67,6 @@ export class UseStore {
         await miaoStorage.set<string>('otherSearchEngines', v);
     }
 
-    // bool
-    // 启用默认右键菜单
     async getEnableDefaultContextMenu() {
         const enableDefaultContextMenu = await miaoStorage.get<boolean>('enableDefaultContextMenu');
 
@@ -92,15 +82,12 @@ export class UseStore {
         await miaoStorage.set<boolean>('enableDefaultContextMenu', v);
     }
 
-    // bool
-    // 主页
     async getHomeTreeId() {
         const homeTreeId = await miaoStorage.get<string>('homeTreeId');
 
         if (!isNil(homeTreeId)) {
             return homeTreeId;
         } else {
-            // await miaoStorage.set<string>('homeTreeId', '1');
             return '';
         }
     }
@@ -108,20 +95,44 @@ export class UseStore {
         await miaoStorage.set<string>('homeTreeId', v);
     }
 
-    // string
-    // 主页父节点
     async getHomeTreeParentId() {
         const homeTreeParentId = await miaoStorage.get<string>('homeTreeParentId');
 
         if (!isNil(homeTreeParentId)) {
             return homeTreeParentId;
         } else {
-            // await miaoStorage.set<string>('homeTreeParentId', '1');
             return '';
         }
     }
     async setHomeTreeParentId(v: string) {
         await miaoStorage.set<string>('homeTreeParentId', v);
+    }
+
+    async getBackgroundImageUrl() {
+        const backgroundImageUrl = await miaoStorage.get<string>('backgroundImageUrl');
+
+        if (!isNil(backgroundImageUrl)) {
+            return backgroundImageUrl;
+        } else {
+            return '';
+        }
+    }
+    async setBackgroundImageUrl(v: string) {
+        await miaoStorage.set<string>('backgroundImageUrl', v);
+    }
+
+    async getBingImageIndex() {
+        const bingImageIndex = await miaoStorage.get<number>('bingImageIndex');
+
+        if (!isNil(bingImageIndex)) {
+            return bingImageIndex;
+        } else {
+            await miaoStorage.set<number>('bingImageIndex', 0);
+            return 0;
+        }
+    }
+    async setBingImageIndex(v: number) {
+        await miaoStorage.set<number>('bingImageIndex', v);
     }
 
 }

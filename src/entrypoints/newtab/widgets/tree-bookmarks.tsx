@@ -33,12 +33,9 @@ export default defineComponent({
         onMounted(async () => {
             homeTreeIdRef.value = await useMyStore.getHomeTreeId();
             selId.value = homeTreeIdRef.value;
-            console.log('11', selId.value);
 
             let HomeTreeParentId = await useMyStore.getHomeTreeParentId();
-            console.log(HomeTreeParentId, p.bookmarks_group);
             if (Object.values(p.bookmarks_group)?.some(x => x.value === HomeTreeParentId)) {
-                console.log(HomeTreeParentId);
                 data.cur_group_id = HomeTreeParentId as any;
             } else {
                 let first: BookmarksGroup = Object.values(p.bookmarks_group)[0];
@@ -47,7 +44,6 @@ export default defineComponent({
         })
 
 
-        /// 计算当前树
         const item = computed(() => {
             if (data.cur_group_id) return p.bookmarks_group[data.cur_group_id]?.item
         })
@@ -224,7 +220,6 @@ export default defineComponent({
                     'data-title': this.item?.title,
                     onEnd: (event) => {
                         let e: SortableEvent & { data: TreeBookmarks, newIndex: number, oldIndex: number } = event as any;
-                        // 不是一个容器
                         if (event.from !== event.to) {
                             let parentId = event.to.dataset['id'];
                             let parentTitle = event.to.dataset['title'];
@@ -241,7 +236,6 @@ export default defineComponent({
                             })
                             return
                         }
-                        // 是一个容器，只允许行内拖拽
                         if (event.from === event.to) {
                             if (e.newIndex === e.oldIndex) return;
 

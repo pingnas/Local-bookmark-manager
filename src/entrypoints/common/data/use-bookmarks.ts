@@ -1,5 +1,4 @@
 import { useDebounceFn } from "@vueuse/core";
-import { omit, pick } from "es-toolkit/compat";
 import { useHistory, useTabGroup } from ".";
 
 
@@ -89,7 +88,6 @@ export const useBookmarks = () => {
                 const a = window.open(node.url, '_blank');
                 setTimeout(() => a?.close(), 8000);
             });
-            // 每批之间间隔 500ms
             if (i + batchSize < nodes.length) {
                 await new Promise(res => setTimeout(res, 8000));
             }
@@ -121,20 +119,12 @@ export const useBookmarks = () => {
     return { bookmarks, bookmarks_group, openAllBookmarks, delEmptyBookmarks, left, right }
 }
 
-/**
- * 将对象分割为前 N 个键值对和其余键值对。
- * @param {object} obj - 原始对象
- * @param {number} N - 要提取的前 N 个键值对数量
- * @returns {[object, object]} - [前 N 个对象, 剩余对象]
- */
 const splitObject = (obj: { [k: string]: any }, N: number) => {
     const entries = Object.entries(obj);
 
-    // 使用 slice() 分割数组
     const firstNEntries = entries.slice(0, N);
     const restEntries = entries.slice(N);
 
-    // 使用 Object.fromEntries() 转换回对象
     const firstNObject = Object.fromEntries(firstNEntries);
     const restObject = Object.fromEntries(restEntries);
 

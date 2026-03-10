@@ -61,7 +61,6 @@ export default defineComponent({
                 group: { name: 'bookmarks', pull: !this.dragToTreeDisabled, put: false },
                 onEnd: (event) => {
                     let e: SortableEvent & { data: BookmarkTreeNode, newIndex: number, oldIndex: number } = event as any;
-                    // 不是一个容器
                     if (event.from !== event.to) {
                         let parentId = event.to.dataset['id'];
                         let parentTitle = event.to.dataset['title'];
@@ -75,7 +74,6 @@ export default defineComponent({
 
                         return
                     }
-                    // 是一个容器，只允许行内拖拽
                     if (event.from === event.to) {
                         if (e.newIndex === e.oldIndex) return;
                         let moveIndex;

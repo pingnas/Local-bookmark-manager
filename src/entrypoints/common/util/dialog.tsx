@@ -24,13 +24,6 @@ class DialogApp {
 class DialogManager {
     public apps: { [k: string]: DialogApp } = {};
 
-    /** 
-     * 打开弹窗
-     * 
-     * let id = dialogManager.open()
-     * 
-     * dialogManager.close(id)
-    */
     open(slot: { default?: () => VNode, footer?: () => VNode, title?: string },): string {
         let id = uuidv4();
         const div = document.createElement("div");

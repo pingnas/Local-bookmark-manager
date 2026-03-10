@@ -1,59 +1,40 @@
 # 本地书签管理器 | [English](./README.md)
 
-**_更好地管理您的浏览器书签_**
+**_新标签页里的书签整理与搜索_**
 
-一个功能强大的浏览器扩展，帮助您高效管理书签、历史记录和标签组。
+一款专注新标签页体验的浏览器扩展，帮助您更高效地管理与检索书签。
 
-> [chromewebstore](https://chromewebstore.google.com/detail/local-bookmark-manager/dlnccdfdalopgfbjbmgjlmehkjohpgng) 
+> [chromewebstore](https://chromewebstore.google.com/detail/local-bookmark-manager/dlnccdfdalopgfbjbmgjlmehkjohpgng)
 
 ## 功能特点
 
-- **书签管理**：直观的树形结构展示，轻松组织和访问您的书签
-- **历史记录管理**：快速查找和整理您的浏览历史
-- **标签组管理**：高效管理和切换标签组
-- **自定义背景**：支持本地上传和网络图片/视频作为背景
-- **配置导出/导入**：轻松备份和恢复您的所有设置
-- **多语言支持**：支持英文、简体中文和繁体中文
-- **全局搜索**：快速搜索书签和历史记录
-
+- **书签树展示**：清晰的树形结构，快速定位书签与文件夹
+- **拖拽整理**：拖放调整书签位置或移动到其他文件夹
+- **书签搜索**：支持关键词与拼音匹配搜索
+- **快捷入口**：常用浏览器页面一键直达
+- **背景图片**：自动获取 Bing 背景，失败时回退默认背景
+- **搜索引擎**：支持百度、谷歌或自定义搜索引擎
+- **多语言支持**：英文、简体中文、繁体中文
 
 ## 使用方法
 
 ### 基本操作
 
 1. **安装扩展后**：
-   - 点击浏览器工具栏中的扩展图标打开弹出窗口
-   - 新标签页将显示您的书签管理界面
+   - 打开浏览器新标签页即可看到书签界面
 
 2. **书签管理**：
-   - 左侧和右侧面板显示书签树形结构
-   - 中间区域显示快捷方式和搜索功能
-   - 右键点击书签或文件夹可以进行更多操作（重命名、删除等）
-   - 拖放书签可以调整位置或移动到不同文件夹
+   - 书签树展示书签结构
+   - 右键书签或文件夹可进行重命名、删除、新建文件夹等操作
+   - 拖拽书签可调整顺序或移动到其他文件夹
 
 3. **搜索功能**：
-   - 在搜索框中输入关键词可以搜索书签和历史记录
-   - 按 Ctrl+Enter 可以直接进行网页搜索
+   - 在搜索框中输入关键词即可检索书签
+   - 按 Ctrl+Enter 使用选定搜索引擎进行网页搜索
 
-4. **背景设置**：
-   - 点击弹出窗口中的"更新背景"按钮
-   - 可以选择默认背景、上传本地图片或使用网络图片/视频
-
-### 高级功能
-
-1. **配置管理**：
-   - **导出配置**：保存您的所有设置到本地文件
-   - **导入配置**：从之前导出的文件恢复设置
-   - **清除配置**：重置所有设置到默认状态
-
-2. **历史书签管理**：
-   - 点击"历史书签管理"可以查看和管理历史记录
-   - 支持添加、打开、导入和导出历史书签组
-
-3. **自定义设置**：
-   - 可以设置默认搜索引擎（百度、谷歌或自定义）
-   - 调整书签拖拽行为
-   - 启用/禁用默认右键菜单
+4. **背景显示**：
+   - 自动拉取 Bing 背景
+   - 拉取失败时使用默认背景
 
 ## 技术栈
 
@@ -89,23 +70,22 @@ pnpm run zip
 
 ## 贡献指南
 
-欢迎贡献代码、报告问题或提出新功能建议！请通过以下方式参与：
+欢迎贡献代码、报告问题或提出新功能建议！
 
 1. Fork 本仓库
-2. 创建您的特性分支 (`git checkout -b feature/amazing-feature`)
-3. 提交您的更改 (`git commit -m 'Add some amazing feature'`)
+2. 创建特性分支 (`git checkout -b feature/amazing-feature`)
+3. 提交更改 (`git commit -m 'Add some amazing feature'`)
 4. 推送到分支 (`git push origin feature/amazing-feature`)
-5. 开启一个 Pull Request
+5. 提交 Pull Request
 
 ## 隐私政策
 
-本扩展尊重用户隐私，所有数据均存储在本地，不会上传到任何服务器。详细信息请查看[隐私政策](/privacy-policy-zh.md)。
+本扩展尊重用户隐私，所有数据均存储在本地，不会上传到任何服务器。详见[隐私政策](/privacy-policy-zh.md)。
 
 ## 许可证
 
-[MIT](./LICENSE) © pingnas
-
+[MIT](./LICENSE) © KineticSketch
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=pingnas/Local-bookmark-manager&type=Date)](https://www.star-history.com/#pingnas/Local-bookmark-manager&Date)
+[![Star History Chart](https://api.star-history.com/image?repos=KineticSketch/Local-bookmark-manager&type=date&legend=top-left)](https://www.star-history.com/?repos=KineticSketch%2FLocal-bookmark-manager&type=date&legend=top-left)

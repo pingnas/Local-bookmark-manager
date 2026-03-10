@@ -1,70 +1,52 @@
 # Local Bookmark Manager  | [Chinese](./README-zh.md)
 
-**_Better management of your bookmarks_**
+**_A new-tab bookmark organizer and search_**
 
-A powerful browser extension that helps you efficiently manage bookmarks, browsing history, and tab groups.
+A browser extension focused on a clean new tab experience for managing and searching bookmarks.
 
-> [chromewebstore](https://chromewebstore.google.com/detail/local-bookmark-manager/dlnccdfdalopgfbjbmgjlmehkjohpgng) 
+> [chromewebstore](https://chromewebstore.google.com/detail/local-bookmark-manager/dlnccdfdalopgfbjbmgjlmehkjohpgng)
 
 ## Features
 
-- **Bookmark Management**: Intuitive tree structure for easy organization and access to your bookmarks
-- **History Management**: Quickly find and organize your browsing history
-- **Tab Group Management**: Efficiently manage and switch between tab groups
-- **Custom Backgrounds**: Support for local uploads and online images/videos as backgrounds
-- **Configuration Export/Import**: Easily backup and restore all your settings
-- **Multilingual Support**: English, Simplified Chinese, and Traditional Chinese
-- **Global Search**: Quickly search bookmarks and browsing history
+- **Bookmark Tree**: Clear tree structure for fast navigation
+- **Drag & Drop**: Reorder bookmarks or move them between folders
+- **Bookmark Search**: Keyword and pinyin matching
+- **Quick Shortcuts**: One-click access to common browser pages
+- **Background Image**: Auto Bing background with a local fallback
+- **Search Engines**: Baidu, Google, or a custom search engine
+- **Multilingual**: English, Simplified Chinese, Traditional Chinese
 
-## Usage Guide
+## Usage
 
-### Basic Operations
+### Basics
 
-1. **After Installation**:
-   - Click the extension icon in the browser toolbar to open the popup window
-   - New tabs will display your bookmark management interface
+1. **After installation**:
+   - Open a new tab to see the bookmark interface
 
-2. **Bookmark Management**:
-   - Left and right panels show bookmark tree structures
-   - Middle area displays shortcuts and search functionality
-   - Right-click on bookmarks or folders for more operations (rename, delete, etc.)
-   - Drag and drop bookmarks to adjust positions or move to different folders
+2. **Bookmark management**:
+   - The tree shows your bookmark structure
+   - Right-click a bookmark or folder for rename, delete, new folder, and more
+   - Drag items to reorder or move between folders
 
-3. **Search Function**:
-   - Enter keywords in the search box to search bookmarks and history
-   - Press Ctrl+Enter for direct web search
+3. **Search**:
+   - Type in the search box to find bookmarks
+   - Press Ctrl+Enter to search the web with the selected engine
 
-4. **Background Settings**:
-   - Click the "Update Background" button in the popup window
-   - Choose from default backgrounds, upload local images, or use online images/videos
-
-### Advanced Features
-
-1. **Configuration Management**:
-   - **Export Configuration**: Save all your settings to a local file
-   - **Import Configuration**: Restore settings from previously exported files
-   - **Clear Configuration**: Reset all settings to default
-
-2. **History Bookmark Management**:
-   - Click "History Bookmark Management" to view and manage history
-   - Support for adding, opening, importing, and exporting history bookmark groups
-
-3. **Custom Settings**:
-   - Set default search engine (Baidu, Google, or custom)
-   - Adjust bookmark drag behavior
-   - Enable/disable default right-click menu
+4. **Background**:
+   - Bing image is fetched automatically
+   - Fallback background is used if fetching fails
 
 ## Tech Stack
 
-- **Frontend Framework**: Vue 3 + TSX
-- **UI Components**: @opentiny/vue
-- **Build Tools**: WXT (Web Extension Tools)
-- **Data Storage**: Chrome Storage API + IndexedDB
-- **Other Technologies**: Dexie.js, RxJS, Lodash
+- **Frontend**: Vue 3 + TSX
+- **UI**: @opentiny/vue
+- **Build**: WXT (Web Extension Tools)
+- **Storage**: Chrome Storage API + IndexedDB
+- **Other**: Dexie.js, RxJS, Lodash
 
 ## Quick Start (Development)
 
-Ensure you have Node.js 20+ and pnpm installed.
+Ensure Node.js 20+ and pnpm are installed.
 
 ```sh
 # Install dependencies
@@ -76,35 +58,34 @@ pnpm run serve
 # Build production version
 pnpm run build
 
-# Package as zip file (for uploading to extension stores)
+# Package as zip file (for extension stores)
 pnpm run zip
 ```
 
 ## Browser Compatibility
 
 - **Chrome/Chromium**: Fully supported
-- **Firefox**: Some compatibility issues exist
-- **Edge**: Theoretically compatible, not fully tested yet
+- **Firefox**: Some compatibility issues
+- **Edge**: Theoretically compatible, not fully tested
 
 ## Contributing
 
-Contributions are welcome! Feel free to contribute code, report issues, or suggest new features through:
+Contributions are welcome:
 
 1. Fork this repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
 3. Commit your changes (`git commit -m 'Add some amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
 ## Privacy Policy
 
-This extension respects user privacy. All data is stored locally and is not uploaded to any servers. For detailed information, please see the [Privacy Policy](/privacy-policy.md).
+This extension respects user privacy. All data is stored locally and not uploaded to any server. See the [Privacy Policy](/privacy-policy.md).
 
 ## License
 
-[MIT](./LICENSE) © pingnas
-
+[MIT](./LICENSE) © KineticSketch
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=pingnas/Local-bookmark-manager&type=Date)](https://www.star-history.com/#pingnas/Local-bookmark-manager&Date)
+[![Star History Chart](https://api.star-history.com/image?repos=KineticSketch/Local-bookmark-manager&type=date&legend=top-left)](https://www.star-history.com/?repos=KineticSketch%2FLocal-bookmark-manager&type=date&legend=top-left)

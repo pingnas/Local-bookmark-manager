@@ -1,83 +1,83 @@
 # Privacy Policy - Local Bookmark Manager
 
-**Last Updated: September 1, 2025**
+**Last Updated: March 10, 2026**
 
 ## Introduction
 
-Local Bookmark Manager (hereinafter referred to as "we," "our extension," or "our product") respects and protects your privacy. This Privacy Policy explains how we collect, use, store, and protect your information. Please read this Privacy Policy carefully before using our extension.
+Local Bookmark Manager ("the Extension") provides a new tab experience focused on bookmark management and search. This policy explains how information is handled within the new tab features.
 
-## Information Collection
+## Scope
 
-### Information We Collect
+The Extension includes only new tab functionality. It does not provide accounts, sync, or cloud services.
 
-This extension only processes the following information locally:
+## Information We Process
 
-1. **Bookmark Data**: We access your browser bookmarks to provide bookmark management functionality.
-2. **Browsing History**: We access your browsing history to provide history management functionality.
-3. **Tab Group Information**: We access your tab group information to provide tab group management functionality.
-4. **User Configuration**: Including your custom settings for the extension, such as background images, interface layout, etc.
+### Data Processed Locally
 
-### How We Collect Information
+1. **Bookmarks**: Used to display, organize, and drag-and-drop bookmarks in the new tab.
+2. **User Settings**: Such as search engine choice, background image, and layout preferences.
 
-All information is obtained through official browser APIs, including:
-- Chrome Bookmarks API
-- Chrome History API
-- Chrome Tabs API
-- Chrome TabGroups API
-- Chrome Storage API
+### How Data Is Accessed
 
-## Information Usage
+The Extension accesses data through official browser APIs:
 
-The information we collect is only used for:
+1. Chrome Bookmarks API
+2. Chrome Storage API
 
-1. Providing, maintaining, and improving extension functionality
-2. Customizing the extension experience according to your settings
-3. Responding to your requests and feedback
+## Network Requests
 
-## Information Storage
+1. **Background Images**: The Extension requests background images from Bing for display only. No bookmarks or settings data are sent with these requests.
+2. **Search Engine Redirects**: When you use quick search, the Extension opens the selected search engine (Google, Baidu, or a custom URL). Your search query is sent as a URL parameter to that search engine.
 
-### Local Storage
+## How We Use Information
 
-All user data is stored on your local device through:
+The Extension uses the data only to:
 
-1. **Browser Storage**: Using Chrome Storage API to store user configurations and settings
-2. **IndexedDB**: Used for storing larger data, such as custom background images
+1. Provide and maintain new tab features.
+2. Apply your settings to the interface and interactions.
 
-### Cloud Storage
+## Local Storage
 
-This extension **does not** upload any of your data to any remote servers. All data processing is completed locally on your device.
+All data is stored locally on your device:
 
-## Information Sharing
+1. **Browser Storage**: Chrome Storage API for settings and preferences.
+2. **IndexedDB**: For larger data such as custom backgrounds.
 
-We do not share your personal information with any third parties.
+## Remote Storage
 
-## Data Security
+The Extension does not upload your data to any remote server.
 
-We take reasonable technical measures to protect your information:
+## Sharing
 
-1. All data is stored only on your local device
-2. No personal identifying information is collected or transmitted
-3. No tracking technologies or analytics tools are used
+The Extension does not share personal information with third parties.
 
-## User Rights
+## Security
 
-You have complete control over your own data:
+To reduce risk, the Extension follows these practices:
 
-1. **Right to Access**: You can access all stored data through the extension interface at any time
-2. **Right to Modify**: You can modify your settings and configurations at any time
-3. **Right to Delete**: You can delete all stored data using the extension's "Clear Configuration" feature
-4. **Right to Export**: You can export your configuration data using the extension's export feature
+1. Data remains on your device.
+2. No personal identity data is collected or transmitted.
+3. No tracking or analytics tools are used.
 
-## Privacy Policy Updates
+## Your Choices
 
-We may update this Privacy Policy from time to time. When we make significant changes, we will notify you through extension update notes.
+You have full control of your data:
 
-## Contact Us
+1. **Access**: View stored data in the new tab interface.
+2. **Edit**: Change settings and preferences at any time.
+3. **Delete**: Clear stored data using the "Clear Configuration" feature.
+4. **Export**: Export your configuration using the export feature.
 
-If you have any questions or suggestions regarding this Privacy Policy, please contact us at:
+## Policy Updates
 
-- GitHub Issues: https://github.com/pingnas/Local-bookmark-manager
+This policy may be updated from time to time. Material changes will be announced in the extension update notes.
+
+## Contact
+
+For questions or suggestions:
+
+- GitHub Issues: https://github.com/KineticSketch/Local-bookmark-manager
 
 ## Consent
 
-By using this extension, you agree to the terms of this Privacy Policy. If you do not agree with this policy, please do not use this extension.
+By using the Extension, you agree to this policy. If you do not agree, please do not use the Extension.
