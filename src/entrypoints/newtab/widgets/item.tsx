@@ -9,7 +9,13 @@ export default defineComponent({
     setup() {
         const { selectRow, selectGroup } = useSelectRow();
 
-        const isDrag = ref(true);
+        const isDrag = ref(false);
+        const animateItems = ref(false);
+        let animateTimer: ReturnType<typeof setTimeout> | undefined;
+        const APPEAR_DELAY = 12;
+        const APPEAR_DURATION = 160;
+        const APPEAR_BUFFER = 24;
+        const containerEl = ref<HTMLElement | null>(null);
 
         const row = ref<BookmarkTreeNode[]>();
         watch(
@@ -22,6 +28,39 @@ export default defineComponent({
                 immediate: true,
             }
         )
+        const calcAppearTotal = (count: number) => {
+            const lastDelay = Math.max(0, count - 1) * APPEAR_DELAY;
+            return Math.max(APPEAR_DURATION, lastDelay + APPEAR_DURATION + APPEAR_BUFFER);
+        }
+        const setContainerRef = (el: any) => {
+            containerEl.value = el?.$el ?? el ?? null;
+        }
+        const scrollToTop = () => {
+            const el = containerEl.value;
+            if (el && 'scrollTop' in el) {
+                el.scrollTop = 0;
+            }
+        }
+        const triggerAppear = (count: number) => {
+            animateItems.value = true;
+            if (animateTimer) clearTimeout(animateTimer);
+            animateTimer = setTimeout(() => {
+                animateItems.value = false;
+            }, calcAppearTotal(count));
+        }
+        watch(
+            () => selectRow.value?.id,
+            (cur, acc) => {
+                if (!cur || cur === acc) return;
+                const count = selectRow.value?.children?.filter(x => !x.children).length ?? 0;
+                triggerAppear(count);
+                nextTick(scrollToTop);
+            },
+            { immediate: true }
+        )
+        onBeforeUnmount(() => {
+            if (animateTimer) clearTimeout(animateTimer);
+        })
 
 
         const sortDisabled = ref(false);
@@ -39,7 +78,10 @@ export default defineComponent({
             selectRow,
             selectGroup,
             isDrag,
+            animateItems,
             row,
+            appearDelay: APPEAR_DELAY,
+            setContainerRef,
             disabled,
             sortDisabled,
             dragToTreeDisabled
@@ -48,18 +90,23 @@ export default defineComponent({
     render() {
 
         return <VueDraggable
+            ref={this.setContainerRef}
             modelValue={this.row ?? []}
             {...{
                 ...this.$attrs,
                 'onUpdate:modelValue': (v: BookmarkTreeNode[]) => {
                     this.row = v;
                 },
-                animation: 150,
+                animation: 0,
                 disabled: this.disabled,
                 sort: !this.sortDisabled,
                 ghostClass: 'item-ghost',
                 group: { name: 'bookmarks', pull: !this.dragToTreeDisabled, put: false },
+                onStart: () => {
+                    this.isDrag = true;
+                },
                 onEnd: (event) => {
+                    this.isDrag = false;
                     let e: SortableEvent & { data: BookmarkTreeNode, newIndex: number, oldIndex: number } = event as any;
                     if (event.from !== event.to) {
                         let parentId = event.to.dataset['id'];
@@ -105,8 +152,8 @@ export default defineComponent({
                     const url = x.url;
                     return <div
                         key={x.id}
-                        class={{ 'item': true, 'item-appear': true }}
-                        style={{ animationDelay: `${i * 20}ms`, }}
+                        class={{ 'item': true, 'item-appear': this.animateItems && !this.isDrag }}
+                        style={{ animationDelay: this.animateItems && !this.isDrag ? `${i * this.appearDelay}ms` : undefined, }}
                         onDblclick={(e: MouseEvent) => {
                             openUrl(x.url)
                         }}

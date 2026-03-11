@@ -25,32 +25,61 @@ export default defineComponent({
 
 
     const fallbackBgUrl = chrome.runtime.getURL('/th.jpg');
-    const currentBgUrl = ref<string>(fallbackBgUrl);
-    const windmillSpinning = ref(false);
+    const bgAUrl = ref<string>(fallbackBgUrl);
+    const bgBUrl = ref<string>('');
+    const isBgAActive = ref(true);
     const switchingBg = ref(false);
 
-    const preloadBg = (url: string) => {
+    const loadImage = (url: string) => new Promise<boolean>((resolve) => {
       const img = new Image();
+      img.onload = () => resolve(true);
+      img.onerror = () => resolve(false);
       img.src = url;
-      img.onload = () => {
-        currentBgUrl.value = url;
-      };
-      img.onerror = () => {
-        if (url !== fallbackBgUrl) {
-          preloadBg(fallbackBgUrl);
+    });
+
+    const setBackground = async (url: string, replace = false) => {
+      if (replace) {
+        bgAUrl.value = url;
+        bgBUrl.value = '';
+        isBgAActive.value = true;
+        return;
+      }
+
+      if (isBgAActive.value) {
+        bgBUrl.value = url;
+        await nextTick();
+        isBgAActive.value = false;
+      } else {
+        bgAUrl.value = url;
+        await nextTick();
+        isBgAActive.value = true;
+      }
+    };
+
+    const preloadBg = async (url: string, fallbackUrl?: string, replace = false) => {
+      const loaded = await loadImage(url);
+      if (loaded) {
+        await setBackground(url, replace);
+        return true;
+      }
+      if (fallbackUrl && fallbackUrl !== url) {
+        const fallbackLoaded = await loadImage(fallbackUrl);
+        if (fallbackLoaded) {
+          await setBackground(fallbackUrl, replace);
         }
-      };
+      }
+      return false;
     };
 
     onMounted(() => {
-      preloadBg(fallbackBgUrl);
+      preloadBg(fallbackBgUrl, undefined, true);
     });
 
     const loadStoredBackground = async () => {
       await useMyStore.getBingImageIndex();
       const storedUrl = await useMyStore.getBackgroundImageUrl();
       if (storedUrl) {
-        preloadBg(storedUrl);
+        preloadBg(storedUrl, fallbackBgUrl, true);
       }
     };
 
@@ -58,45 +87,43 @@ export default defineComponent({
       loadStoredBackground();
     });
 
-    const spinWindmill = () => {
-      windmillSpinning.value = true;
-      window.setTimeout(() => {
-        windmillSpinning.value = false;
-      }, 600);
-    };
-
     const switchBackground = async () => {
       if (switchingBg.value) return;
       switchingBg.value = true;
-      spinWindmill();
       try {
         const nextIndex = (await useMyStore.getBingImageIndex()) + 1;
         const normalizedIndex = nextIndex % 8;
         await useMyStore.setBingImageIndex(normalizedIndex);
         const nextUrl = await fetchBingImageUrl(normalizedIndex);
         await useMyStore.setBackgroundImageUrl(nextUrl);
-        preloadBg(nextUrl);
+        await preloadBg(nextUrl, isBgAActive.value ? bgAUrl.value : bgBUrl.value);
       } catch (error) {
         // keep current background if fetch fails
       } finally {
-        window.setTimeout(() => {
-          switchingBg.value = false;
-        }, 200);
+        switchingBg.value = false;
       }
     };
+
+    const buildBgStyle = (url: string) => ({
+      backgroundImage: url ? `url(${url})` : 'none'
+    });
 
     return () => {
 
       const getTemp = () => {
         return <div class={'wrap'} style={{ display: 'flex', flexDirection: 'column' }}>
-          <div
-            class='wrap-bg'
-            style={{
-              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${currentBgUrl.value})`
-            }}
-          ></div>
+          <div class='wrap-bg' aria-hidden='true'>
+            <div
+              class={['bg-layer', isBgAActive.value ? 'is-active' : '']}
+              style={buildBgStyle(bgAUrl.value)}
+            ></div>
+            <div
+              class={['bg-layer', !isBgAActive.value ? 'is-active' : '']}
+              style={buildBgStyle(bgBUrl.value)}
+            ></div>
+          </div>
           <button
-            class={['windmill-btn', windmillSpinning.value ? 'is-spinning' : '', switchingBg.value ? 'is-busy' : '']}
+            class={['windmill-btn', switchingBg.value ? 'is-busy' : '']}
             title='切换背景'
             aria-label='切换背景'
             disabled={switchingBg.value}

@@ -41,23 +41,12 @@ export const useSelectRow = () => {
         }
     }
     watch(
-        () => selId,
-        (cur, acc) => {
+        [selId, bookmarks_group],
+        () => {
             setSelectRow()
         },
         {
             immediate: true,
-            deep: true,
-        }
-    )
-    watch(
-        () => bookmarks_group,
-        (cur, acc) => {
-            setSelectRow()
-        },
-        {
-            immediate: true,
-            deep: true,
         }
     )
 

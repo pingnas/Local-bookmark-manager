@@ -15,7 +15,7 @@ export class BookmarksGroup {
 }
 
 export const useBookmarks = () => {
-    const bookmarks = ref<BookmarkTreeNode[]>([]);
+    const bookmarks = shallowRef<BookmarkTreeNode[]>([]);
     const { historyData } = useHistory();
     const { tabGroupData } = useTabGroup();
     let windows: BookmarkTreeNode = {
@@ -29,18 +29,16 @@ export const useBookmarks = () => {
     }
 
     const bookmarks_group = computed(() => {
-        return [windows, ...bookmarks.value?.[0]?.children || []]?.reduce((a: Record<string, BookmarksGroup>, b: BookmarkTreeNode) => {
-            a = {
-                ...a,
-                [b.id]: new BookmarksGroup({
-                    label: b.title,
-                    value: b.id,
-                    item: b,
-                }
-                )
-            }
-            return a;
-        }, {} as Record<string, BookmarksGroup>);
+        const group: Record<string, BookmarksGroup> = Object.create(null);
+        const list = [windows, ...(bookmarks.value?.[0]?.children || [])];
+        for (const b of list) {
+            group[b.id] = new BookmarksGroup({
+                label: b.title,
+                value: b.id,
+                item: b,
+            })
+        }
+        return group;
     });
 
     const fetchBookmarks = useDebounceFn(() => {
@@ -108,8 +106,6 @@ export const useBookmarks = () => {
         Object.values(bookmarks_group.value).slice(0, -1).forEach(x => remove(x.item));
     }
     const left = computed(() => {
-
-        const [firstTwo, others] = splitObject(bookmarks_group.value, 2);
         return bookmarks_group.value;
     })
     const right = computed(() => {

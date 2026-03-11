@@ -1,8 +1,9 @@
 import { PropType } from '#imports';
 import { BookmarksGroup } from '@/entrypoints/common/data';
 import { getName, TreeBookmarks, treeBookmarksLevel, useMyStore } from '@/entrypoints/common/util';
-import { RadioButton, RadioGroup, TinyNotify } from '@opentiny/vue';
-import { SortableEvent, VueDraggable } from 'vue-draggable-plus';
+import { useVirtualList } from '@vueuse/core';
+import { RadioButton, RadioGroup } from '@opentiny/vue';
+import { VueDraggable } from 'vue-draggable-plus';
 import { t_b_addFolder } from '../dialog/t-b-addFolder';
 import { t_b_del } from '../dialog/t-b-del';
 import { t_b_openall } from '../dialog/t-b-openall';
@@ -62,6 +63,35 @@ export default defineComponent({
             }
         )
         const disabled = computed(() => data.cur_group_id === 'window')
+        const treeItemHeight = 48;
+        const { list: virtualList, containerProps, wrapperProps, scrollTo } = useVirtualList(
+            computed(() => row.value ?? []),
+            {
+                itemHeight: treeItemHeight,
+                overscan: 8,
+            }
+        )
+        const animateTree = ref(false);
+        let animateTimer: ReturnType<typeof setTimeout> | undefined;
+        const triggerTreeAppear = () => {
+            animateTree.value = true;
+            if (animateTimer) clearTimeout(animateTimer);
+            animateTimer = setTimeout(() => {
+                animateTree.value = false;
+            }, 260);
+        }
+        watch(
+            () => item.value?.id,
+            (cur, acc) => {
+                if (!cur || cur === acc) return;
+                scrollTo(0);
+                triggerTreeAppear();
+            },
+            { immediate: true }
+        )
+        onBeforeUnmount(() => {
+            if (animateTimer) clearTimeout(animateTimer);
+        })
 
         return {
             click,
@@ -71,7 +101,11 @@ export default defineComponent({
             item,
             row,
             disabled,
-            homeTreeIdRef
+            homeTreeIdRef,
+            virtualList,
+            containerProps,
+            wrapperProps,
+            animateTree
         }
     },
     render() {
@@ -83,8 +117,8 @@ export default defineComponent({
             }, 0)
 
             let c = <div
-                style={{ paddingLeft: `${x.padding}px`, animationDelay: `${index * 18}ms`, }}
-                class={{ 'drag-tree-item': true, 'tree-appear': true, }}
+                style={{ paddingLeft: `${x.padding}px`, animationDelay: this.animateTree ? `${index * 18}ms` : undefined, }}
+                class={{ 'drag-tree-item': true, 'tree-appear': this.animateTree, }}
             >
                 <div
                     class={{ 'bookmarks-item': true, 'tree-select': x.node.id === selId.value, 'ishometree': x.node.id === this.homeTreeIdRef }}
@@ -178,7 +212,7 @@ export default defineComponent({
                 return <div style={{ marginBottom: '10px', }} ref={'bookmarksGroupRef'}>
                     <RadioGroup
                         v-model={this.data.cur_group_id}
-                        fill="#6d28d9"
+                        fill="#0f766e"
                         text-color="#fff"
                         size='medium'
                         style={{
@@ -198,53 +232,23 @@ export default defineComponent({
             }
             return <></>
         }
+        const containerStyle = {
+            ...(this.containerProps.style as any),
+            overflowY: 'auto',
+            height: `calc(100% - ${this.bookmarksGroupHeight}px)`,
+        }
+
         return <>
             {getBookmarksGroup()}
-            <VueDraggable
-                modelValue={this.row ?? []}
-                {...{
-                    'onUpdate:modelValue': (v: TreeBookmarks[]) => {
-                        this.row = v;
-                    },
-                    style: {
-                        overflowY: 'auto',
-                        height: `calc(100% - ${this.bookmarksGroupHeight}px)`,
-
-                    },
-                    animation: 150,
-                    disabled: true,
-                    ghostClass: 'tree-item-ghost',
-                    group: "tree-item",
-                    filter: '.first-tree-item',
-                    'data-id': this.data.cur_group_id,
-                    'data-title': this.item?.title,
-                    onEnd: (event) => {
-                        let e: SortableEvent & { data: TreeBookmarks, newIndex: number, oldIndex: number } = event as any;
-                        if (event.from !== event.to) {
-                            let parentId = event.to.dataset['id'];
-                            let parentTitle = event.to.dataset['title'];
-
-                            TinyNotify({
-                                type: 'success',
-                                position: 'top-right',
-                                title: () => <div style={{ fontSize: '12px', fontWeight: '400px', wordBreak: 'break-word', whiteSpace: 'pre-wrap', overflow: 'auto' }}>
-                                    <span style={{ color: 'red' }}>{e.data.parent.title}</span>
-                                    {i18n.t('NewTab.text.of_bookmark')}
-                                    <span style={{ color: 'red' }}>{e.data.node.title}</span> {i18n.t('NewTab.text.success_move_to')}
-                                    <span style={{ color: 'red' }}>{parentTitle}</span>
-                                </div>
-                            })
-                            return
-                        }
-                        if (event.from === event.to) {
-                            if (e.newIndex === e.oldIndex) return;
-
-                        }
-                    },
-                }}
+            <div
+                ref={this.containerProps.ref}
+                onScroll={this.containerProps.onScroll}
+                style={containerStyle}
             >
-                {this.row?.map((x, i) => getTemp(x, i))}
-            </VueDraggable>
+                <div {...this.wrapperProps}>
+                    {this.virtualList?.map((x) => getTemp(x.data, x.index))}
+                </div>
+            </div>
         </>;
     }
 })

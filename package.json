@@ -2,7 +2,7 @@
   "name": "wxt-vue-starter",
   "description": "Local bookmark manager",
   "license": "MIT",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "scripts": {
     "serve": "wxt",
     "dev:firefox": "wxt -b firefox",
@@ -35,7 +35,7 @@
     "@vitejs/plugin-vue-jsx": "5.1.4",
     "@wxt-dev/auto-icons": "^1.1.1",
     "@wxt-dev/module-vue": "1.0.3",
-    "sass": "1.97.3",
+    "sass": "1.98.0",
     "typescript": "5.9.3",
     "vite-plugin-remove-console": "^2.2.0",
     "vue-tsc": "3.2.5",
