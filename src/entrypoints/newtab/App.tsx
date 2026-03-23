@@ -25,7 +25,7 @@ export default defineComponent({
 
 
     const fallbackBgUrl = chrome.runtime.getURL('/th.jpg');
-    const bgAUrl = ref<string>(fallbackBgUrl);
+    const bgAUrl = ref<string>('');
     const bgBUrl = ref<string>('');
     const isBgAActive = ref(true);
     const switchingBg = ref(false);
@@ -71,32 +71,51 @@ export default defineComponent({
       return false;
     };
 
-    onMounted(() => {
-      preloadBg(fallbackBgUrl, undefined, true);
-    });
+    const getActiveBackgroundUrl = () => isBgAActive.value ? bgAUrl.value : bgBUrl.value;
 
-    const loadStoredBackground = async () => {
-      await useMyStore.getBingImageIndex();
+    const initializeBackground = async () => {
+      const storedIndex = await useMyStore.getBingImageIndex();
       const storedUrl = await useMyStore.getBackgroundImageUrl();
-      if (storedUrl) {
-        preloadBg(storedUrl, fallbackBgUrl, true);
+
+      if (storedUrl && await preloadBg(storedUrl, undefined, true)) {
+        return;
       }
+
+      if (storedUrl) {
+        try {
+          const refreshedUrl = await fetchBingImageUrl(storedIndex % 8);
+          const refreshed = await preloadBg(refreshedUrl, undefined, true);
+
+          if (refreshed) {
+            await useMyStore.setBackgroundImageUrl(refreshedUrl);
+            return;
+          }
+        } catch (error) {
+          // fall through to the local fallback image
+        }
+      }
+
+      await preloadBg(fallbackBgUrl, undefined, true);
     };
 
     onMounted(() => {
-      loadStoredBackground();
+      initializeBackground();
     });
 
     const switchBackground = async () => {
       if (switchingBg.value) return;
       switchingBg.value = true;
       try {
-        const nextIndex = (await useMyStore.getBingImageIndex()) + 1;
-        const normalizedIndex = nextIndex % 8;
-        await useMyStore.setBingImageIndex(normalizedIndex);
+        const currentIndex = await useMyStore.getBingImageIndex();
+        const normalizedIndex = (currentIndex + 1) % 8;
         const nextUrl = await fetchBingImageUrl(normalizedIndex);
-        await useMyStore.setBackgroundImageUrl(nextUrl);
-        await preloadBg(nextUrl, isBgAActive.value ? bgAUrl.value : bgBUrl.value);
+        const currentBgUrl = getActiveBackgroundUrl() || fallbackBgUrl;
+        const switched = await preloadBg(nextUrl, currentBgUrl);
+
+        if (switched) {
+          await useMyStore.setBingImageIndex(normalizedIndex);
+          await useMyStore.setBackgroundImageUrl(nextUrl);
+        }
       } catch (error) {
         // keep current background if fetch fails
       } finally {
