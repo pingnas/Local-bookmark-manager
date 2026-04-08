@@ -1,13 +1,10 @@
 {
   "extends": "./.wxt/tsconfig.json",
   "compilerOptions": {
+    "types": [
+      "chrome"
+    ],
     "jsx": "preserve",
-    "jsxImportSource": "vue",
-    "baseUrl": "./",
-    "paths": {
-      "@/*": [
-        "src/*"
-      ]
-    }
+    "jsxImportSource": "vue"
   }
 }
