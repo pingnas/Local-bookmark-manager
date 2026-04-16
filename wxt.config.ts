@@ -1,5 +1,8 @@
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import { fileURLToPath, URL } from 'node:url';
+import path from 'path';
+import { FileSystemIconLoader } from 'unplugin-icons/loaders';
+import Icons from 'unplugin-icons/vite';
 import removeConsole from 'vite-plugin-remove-console';
 import { defineConfig } from 'wxt';
 
@@ -42,6 +45,13 @@ export default defineConfig({
       ...configEnv.mode === 'production'
         ? [removeConsole({ includes: ['log', 'warn'] })]
         : [],
+      Icons({
+        customCollections: {
+          'my-icons': FileSystemIconLoader(
+            path.resolve(__dirname, 'src/assets/icons'),
+          ),
+        },
+      }),
     ],
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),

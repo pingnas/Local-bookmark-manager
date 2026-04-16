@@ -1,13 +1,15 @@
 import { useMyStore } from '@/entrypoints/common/util';
 import { Col, Row, Watermark } from '@opentiny/vue';
-import { size } from 'es-toolkit/compat';
+import { size } from 'lodash-es';
 import { useBookmarks } from '../common/data';
 import { fetchBingImageUrl } from '../common/util/bing-img';
+import { getNextBingBackground } from './background-switch';
 import { useLayoutSize } from './use';
 import Item from './widgets/item';
 import Search from './widgets/search';
 import Shortcut from './widgets/shortcut';
 import TreeBookmarks from './widgets/tree-bookmarks';
+import GlyphsSparkle from '~icons/glyphs/sparkle?width=26.67px&height=26.67px';
 
 export default defineComponent({
   setup() {
@@ -15,7 +17,7 @@ export default defineComponent({
 
 
     onMounted(async () => {
-      document.oncontextmenu = await useMyStore.getEnableDefaultContextMenu() ? null : function () {
+      document.oncontextmenu = function () {
         return false;
       }
     })
@@ -107,14 +109,22 @@ export default defineComponent({
       switchingBg.value = true;
       try {
         const currentIndex = await useMyStore.getBingImageIndex();
-        const normalizedIndex = (currentIndex + 1) % 8;
-        const nextUrl = await fetchBingImageUrl(normalizedIndex);
         const currentBgUrl = getActiveBackgroundUrl() || fallbackBgUrl;
-        const switched = await preloadBg(nextUrl, currentBgUrl);
+        const nextBackground = await getNextBingBackground({
+          currentIndex,
+          currentUrl: currentBgUrl,
+          fetchImageUrl: fetchBingImageUrl,
+        });
+
+        if (!nextBackground) {
+          return;
+        }
+
+        const switched = await preloadBg(nextBackground.url, currentBgUrl);
 
         if (switched) {
-          await useMyStore.setBingImageIndex(normalizedIndex);
-          await useMyStore.setBackgroundImageUrl(nextUrl);
+          await useMyStore.setBingImageIndex(nextBackground.index);
+          await useMyStore.setBackgroundImageUrl(nextBackground.url);
         }
       } catch (error) {
         // keep current background if fetch fails
@@ -148,13 +158,7 @@ export default defineComponent({
             disabled={switchingBg.value}
             onClick={switchBackground}
           >
-            <svg viewBox="0 0 64 64" aria-hidden="true">
-              <path d="M32 6 L40 26 L32 32 L24 26 Z" />
-              <path d="M58 32 L38 40 L32 32 L38 24 Z" />
-              <path d="M32 58 L24 38 L32 32 L40 38 Z" />
-              <path d="M6 32 L26 24 L32 32 L26 40 Z" />
-              <circle cx="32" cy="32" r="4" />
-            </svg>
+            <GlyphsSparkle />
           </button>
           <Row class={'center-top'}>
             <Col xl={12}>

@@ -1,5 +1,10 @@
-import { openUrlInNewTab } from "@/entrypoints/common/util"
-import { RiApps2Line, RiDownload2Line, RiFlagLine, RiHistoryLine, RiPuzzleLine, RiSettings4Line } from "vue-icons-plus/ri"
+import { openUrlInNewTab } from "@/entrypoints/common/util";
+import RiApps2Line from '~icons/ri/apps-2-line';
+import RiDownload2Line from '~icons/ri/download-2-line';
+import RiFlagLine from '~icons/ri/flag-line';
+import RiHistoryLine from '~icons/ri/history-line';
+import RiPuzzleLine from '~icons/ri/puzzle-line';
+import RiSettings4Line from '~icons/ri/settings-4-line';
 
 export default defineComponent({
     setup(p, { attrs }) {
@@ -17,6 +22,7 @@ export default defineComponent({
                     h(RiFlagLine,
                         {
                             color: 'black',
+                            "font-size": 19,
                             onClick: () => {
                                 openUrlInNewTab('chrome://flags/');
                             }
@@ -27,6 +33,7 @@ export default defineComponent({
                     h(RiPuzzleLine,
                         {
                             color: 'black',
+                            "font-size": 19,
                             onClick: () => {
                                 openUrlInNewTab('chrome://extensions/');
                             }
@@ -37,6 +44,7 @@ export default defineComponent({
                     h(RiSettings4Line,
                         {
                             color: 'black',
+                            "font-size": 19,
                             onClick: () => {
                                 openUrlInNewTab('chrome://settings/');
                             }
@@ -47,6 +55,7 @@ export default defineComponent({
                     h(RiDownload2Line,
                         {
                             color: 'black',
+                            "font-size": 19,
                             onClick: () => {
                                 openUrlInNewTab('chrome://downloads/');
                             }
@@ -57,6 +66,7 @@ export default defineComponent({
                     h(RiHistoryLine,
                         {
                             color: 'black',
+                            "font-size": 19,
                             onClick: () => {
                                 openUrlInNewTab('chrome://history/');
                             }
@@ -67,6 +77,7 @@ export default defineComponent({
                     h(RiApps2Line,
                         {
                             color: 'black',
+                            "font-size": 19,
                             onClick: () => {
                                 openUrlInNewTab('chrome://apps/');
                             }

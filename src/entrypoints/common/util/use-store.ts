@@ -1,5 +1,5 @@
 import { miaoStorage } from "@/entrypoints/common/util";
-import { isNil } from "es-toolkit/compat";
+import { isNil } from "lodash-es";
 import { v4 as uuidv4 } from 'uuid';
 
 export class UseStore {
@@ -65,21 +65,6 @@ export class UseStore {
 
     async setOtherSearchEngines(v: string) {
         await miaoStorage.set<string>('otherSearchEngines', v);
-    }
-
-    async getEnableDefaultContextMenu() {
-        const enableDefaultContextMenu = await miaoStorage.get<boolean>('enableDefaultContextMenu');
-
-        let enable = import.meta.env.DEV ? true : false;
-        if (!isNil(enableDefaultContextMenu)) {
-            return enableDefaultContextMenu;
-        } else {
-            await miaoStorage.set<boolean>('enableDefaultContextMenu', enable);
-            return enable;
-        }
-    }
-    async setEnableDefaultContextMenu(v: boolean) {
-        await miaoStorage.set<boolean>('enableDefaultContextMenu', v);
     }
 
     async getHomeTreeId() {

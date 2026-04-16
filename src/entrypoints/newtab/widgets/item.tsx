@@ -199,7 +199,6 @@ export default defineComponent({
                             this.$contextmenu({
                                 x: e.x,
                                 y: e.y,
-                                theme: 'mac',
                                 items,
                             });
 
