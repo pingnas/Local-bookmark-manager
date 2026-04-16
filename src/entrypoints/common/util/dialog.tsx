@@ -1,11 +1,10 @@
 import { omit } from "lodash-es";
-import { v4 as uuidv4, } from 'uuid';
 import { App } from "vue";
 import { Button, DialogBox } from "@opentiny/vue";
 import { VNode } from "vue";
-import { Subscription } from "rxjs";
 import { DialogCloseService, DialogOpenService } from "./service";
 import dayjs, { Dayjs } from "dayjs";
+import { nanoid } from "nanoid";
 
 
 class DialogApp {
@@ -25,21 +24,21 @@ class DialogManager {
     public apps: { [k: string]: DialogApp } = {};
 
     open(slot: { default?: () => VNode, footer?: () => VNode, title?: string },): string {
-        let id = uuidv4();
+        let id = nanoid();
         const div = document.createElement("div");
         document.body.appendChild(div);
         const app = createApp(h(Dialog, { id: id, }));
         app.mount(div);
         Object.assign(this.apps, { [id]: new DialogApp({ id: id, app: app, wrap: div }) })
 
-        DialogOpenService.next({ id: id, slot: slot })
+        DialogOpenService.trigger({ id: id, slot: slot })
         return id;
     }
 
     close(id: string) {
         const app = this.apps[id];
         if (app) {
-            DialogCloseService.next({ id, })
+            DialogCloseService.trigger({ id, })
             setTimeout(() => {
                 app.app.unmount();
                 app.wrap.remove();
@@ -57,7 +56,7 @@ export const Dialog = defineComponent({
     props: {
         id: {
             type: String,
-            default: () => uuidv4()
+            default: () => nanoid()
         }
     },
     setup(p) {
@@ -87,23 +86,23 @@ export const Dialog = defineComponent({
             dialogManager.close(p.id)
         }
 
-        let s1: Subscription
-        let s2: Subscription
+        let dialogOpenListener: { off: () => void } | undefined
+        let dialogCloseListener: { off: () => void } | undefined
         onMounted(() => {
-            s1 = DialogOpenService.subscribe(x => {
+            dialogOpenListener = DialogOpenService.on(x => {
                 if (x.id === p.id) {
                     open(x.slot)
                 }
             })
-            s2 = DialogCloseService.subscribe(x => {
+            dialogCloseListener = DialogCloseService.on(x => {
                 if (x.id === p.id) {
                     data.dialogboxVisibility = false;
                 }
             })
         })
         onUnmounted(() => {
-            s1.unsubscribe()
-            s2.unsubscribe()
+            dialogOpenListener?.off()
+            dialogCloseListener?.off()
         })
         return {
             data,

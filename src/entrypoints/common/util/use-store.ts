@@ -1,12 +1,12 @@
 import { miaoStorage } from "@/entrypoints/common/util";
 import { isNil } from "lodash-es";
-import { v4 as uuidv4 } from 'uuid';
+import { nanoid } from "nanoid";
 
 export class UseStore {
-    public id = uuidv4()
+    public id = nanoid()
     updateId() {
         setTimeout(() => {
-            this.id = uuidv4()
+            this.id = nanoid()
         }, 10);
     }
 
