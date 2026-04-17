@@ -5,6 +5,7 @@ import { FileSystemIconLoader } from 'unplugin-icons/loaders';
 import Icons from 'unplugin-icons/vite';
 import removeConsole from 'vite-plugin-remove-console';
 import { defineConfig } from 'wxt';
+import tailwindcss from '@tailwindcss/vite';
 
 // https://wxt.dev/api/config.html
 // https://github.com/wxt-dev/wxt
@@ -52,6 +53,7 @@ export default defineConfig({
           ),
         },
       }),
+      tailwindcss(),
     ],
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),

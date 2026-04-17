@@ -4,6 +4,7 @@ import 'normalize.css';
 import { createApp } from 'vue';
 import App from './App';
 import './style.scss';
+import './tailwindcss.css';
 
 
 createApp(App)

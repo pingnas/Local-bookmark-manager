@@ -1,5 +1,5 @@
 import { useDebounceFn } from "@vueuse/core";
-import { useHistory, useTabGroup } from ".";
+import { useBarTabGroup, useHistory, useTabGroup } from ".";
 
 
 export class BookmarksGroup {
@@ -18,19 +18,22 @@ export const useBookmarks = () => {
     const bookmarks = shallowRef<BookmarkTreeNode[]>([]);
     const { historyData } = useHistory();
     const { tabGroupData } = useTabGroup();
-    let windows: BookmarkTreeNode = {
+    const { barTabGroupData } = useBarTabGroup();
+
+    const windows = computed<BookmarkTreeNode>(() => ({
         title: i18n.t('NewTab.windows'),
         id: 'window',
         children: [
             historyData.value,
             tabGroupData.value,
+            // barTabGroupData.value,
         ],
         syncing: false,
-    }
+    }))
 
     const bookmarks_group = computed(() => {
         const group: Record<string, BookmarksGroup> = Object.create(null);
-        const list = [windows, ...(bookmarks.value?.[0]?.children || [])];
+        const list = [windows.value, ...(bookmarks.value?.[0]?.children || [])];
         for (const b of list) {
             group[b.id] = new BookmarksGroup({
                 label: b.title,

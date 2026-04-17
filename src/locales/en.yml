@@ -41,4 +41,5 @@ NewTab:
     active_tab: Active Tab
     no_name_tab_group: Unnamed Tab Group
     tab_group: Tab Group
+    bar_tab_group: Tab Bar Groups
     history: History

@@ -41,4 +41,5 @@ NewTab:
     active_tab: 活动标签页
     no_name_tab_group: 未命名标签组
     tab_group: 标签组
+    bar_tab_group: 标签栏标签组
     history: 历史记录

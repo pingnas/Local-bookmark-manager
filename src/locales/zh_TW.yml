@@ -41,4 +41,5 @@ NewTab:
     active_tab: 活動標籤頁
     no_name_tab_group: 未命名標籤組
     tab_group: 標籤組
+    bar_tab_group: 標籤列標籤組
     history: 歷史記錄
